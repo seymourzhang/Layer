@@ -1,0 +1,75 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      数据分析
+    </h1>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+    	<div>
+    		<!-- <p style="font-size:1.2rem;
+    				  position: relative; 
+	    			  top:1rem; 
+	    			  left:1rem;">
+    			当前批次分析
+    		</p>
+            <br/> -->
+            <ion-list>
+                <!-- <ion-item class="item-icon-right" ng-click="pointDevelop('tempChart')">
+                      温度曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('reportTempHumi')">
+                      温湿度综合
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+                <ion-item class="item-icon-right" ng-click="pointDevelop('eggWeigLayRate')">
+                      产蛋率曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <!-- <ion-item class="item-icon-right" ng-click="pointDevelop('coluCurve')">
+                      产蛋率曲线(演示)
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+                <ion-item class="item-icon-right" ng-click="pointDevelop('eggWeigLay')">
+                      蛋重曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('onlyChickEggs')">
+                      只鸡产蛋曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+				        <!-- <ion-item class="item-icon-right" ng-click="pointDevelop('onlyChickEggsDemo')">
+                      只鸡产蛋曲线Demo
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+                <ion-item class="item-icon-right" ng-click="pointDevelop('cullDeathRate')">
+                      死淘率曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('reportFeedWaterRate')">
+                      采食饮水曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('reportEggWeightFeed')">
+                      料蛋比曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('waterFeed')">
+                      水料比曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('chickenWeightAnalyze')">
+                      体重曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+				<!--
+                <ion-item class="item-icon-right" ng-click="pointDevelop('salesAnalyze')">
+                      销售分析曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+				-->
+            </ion-list>
+        </div>    
+    </ion-content>
+</ion-view>

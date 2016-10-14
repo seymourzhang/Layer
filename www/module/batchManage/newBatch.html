@@ -1,0 +1,94 @@
+﻿<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="backBatchManage()"></a>
+    <h1 class="title">
+      新建批次
+    </h1>
+<a class="button icon button-clear" ng-click="Clicksave()" ng-hide="saveAddBtn">保存</a>
+</div>
+    <ion-content class="has-header">
+           <label class="item item-input item-select" style=" position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+              <span class="input-label fontColor">类别</span>
+              <i class="icon ion-ios-arrow-forward"></i> 
+              
+              <select id="eggTypeSelect"
+                      ng-model="batchData.eggType"  
+                      ng-init="batchData.eggType=''" 
+                      ng-change="JudgeEggType()"> 
+                  <option value="">请选择</option> 
+                  <option value        =  "{{key}}" 
+                          ng-repeat    =  "(key,val) in myConfig.eggType" 
+                          ng-selected  =  "key==batchData.eggType">
+                          {{val}}
+                  </option> 
+              </select>
+         </label>
+          <label class="item item-input item-select" style=" position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+            <span class="input-label fontColor">品种</span>
+            <i class="icon ion-ios-arrow-forward"></i> 
+            <select id="chickenTypeSelect"
+                    ng-model="batchData.chickenType" 
+                    ng-init="batchData.chickenType=''"
+                    ng-change="JudgeType()"> 
+                    <option value="">请选择</option> 
+                    <option value        =  "{{key}}" 
+                            ng-repeat    =  "(key,val) in myConfig.chickenType" 
+                            ng-selected  =  "key==batchData.chickenType">
+                            {{val}}
+                    </option> 
+            </select>
+         </label> 
+          <!-- <label class="item item-input"> 
+              <span class="input-label fontColor">入舍时日期</span> 
+                <i class="icon ion-ios-arrow-forward"></i>
+                <ionic-datepicker  input-obj="datepickerObjectPopup"> 
+                  <input type="text" id="place_dateId" ng-model="batchData.place_date" placeholder="请输入"style="background:#FFF;"/> 
+                </ionic-datepicker>
+          </label> -->
+
+          <label class="item item-input"> 
+              <span class="input-label fontColor">入舍时日期</span> 
+                <i class="icon ion-ios-arrow-forward"></i>
+                  <input type="date" id="place_dateId" ng-focus="judgeDevice" ng-blur="GetPlacedate()" ng-model="batchData.place_date" placeholder="请输入" style="background:#FFF;"/> 
+          </label>
+
+          <label class="item item-input"> 
+            <span class="input-label fontColor">入舍时日龄</span> 
+              <i class="icon ion-ios-arrow-forward"></i>
+                <input type="number" id="place_day_ageId" ng-model="batchData.place_day_age" placeholder="请输入"  ng-change="getthedate()"  style="background:#FFF;" />
+          </label>
+
+          <label class="item item-input"> 
+            <span class="input-label fontColor">入舍时周龄（自动）</span> 
+              <i class="icon ion-ios-arrow-forward"></i>
+                <input type="number" id="place_week_ageId" ng-model="batchData.place_week_age" placeholder="自动生成" readonly="readonly" style="background:#FFF;" />
+          </label>
+
+          
+
+           <label class="item item-input"> 
+            <span class="input-label fontColor">批次编号（自动）</span> 
+              <i class="icon ion-ios-arrow-forward"></i>
+                <input type="text" id="batchCodeId" ng-model="batchData.BatchCode" placeholder="自动生成" readonly="readonly" style="background:#FFF;" />
+          </label>
+
+        <div class="item item-divider">
+          <strong>青年鸡入舍明细</strong>
+        </div>
+
+        <div id="newBatchId">
+          <div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav class="newBatchDiv"></div>
+        </div>
+        <br>
+        <div class="middle"> 
+        <a class           =  "button  button-balanced saveBtn"
+           ng-click        =  "Clicksave()"
+           ng-hide         =  "saveAddBtn">
+           保   存
+        </a> 
+      </div> 
+
+
+
+    </ion-content>
+</ion-view>

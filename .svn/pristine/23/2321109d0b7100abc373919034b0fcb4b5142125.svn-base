@@ -1,0 +1,51 @@
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+   	<a class="button icon ion-chevron-left button-clear" style=" left:-6%; width:20%;  height: 100%;" ng-click="goDataAnalyseTable()"></a>
+    <h1 class="title">饲料转换率</h1> 
+   </div> 
+   <ion-content class="has-header"> 
+    <div id="feedconvert_DIV">
+    	<div id="main" style = "height:85%;"></div>
+		     <div style="height: 2.5rem;">
+                   <div style="float:left; width:40%;  height: 2.5rem;overflow:hidden; ">
+                        <p  style="position: relative; top:5px;left:5%;">
+                          筛选:
+                        </p>
+                        <select class="select-style" ng-change = "changesCompareType()" ng-model="cullDeathRateData.compareType">  
+                            <option value="{{key}}" ng-repeat="(key,val) in myConfig.CompareType" ng-selected="key==cullDeathRateData.compareType">{{val}}</option> 
+                        </select> 
+                   </div>
+
+
+
+                   <div ng-show = "batchDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+                          <p  style="position: relative; top:5px;left:5%;">
+                           请选择:
+                          </p>
+                          <select class="select-style" ng-change = "changesFarmId()" ng-model="cullDeathRateData.selectedBatch">
+                                  <option value        =  "{{key}}"
+                                          ng-repeat    =  "(key,val) in cullDeathRateData.farmBatch"
+                                          ng-selected  =  "key==cullDeathRateData.selectedBatch">
+                                      {{val}}
+                                  </option>
+                          </select>
+                   </div>
+
+
+                   <div ng-show = "housesDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+                          <p  style="position: relative; top:5px;left:5%;">
+                            请选择:
+                          </p>
+                          <select class="select-style" ng-change = "changesHousesId()" ng-model="cullDeathRateData.selectedHouse">
+                                  <option value        =  "{{item}}"
+                                          ng-repeat    =  "item in cullDeathRateData.containBatchHouse"
+                                          ng-selected  =  "item.HouseId == cullDeathRateData.selectedHouse.id">
+                                      {{item.houseName}}栋
+                                  </option>
+                          </select>
+                   </div>
+              </div>
+	</div>
+   </ion-content> 
+  </ion-view>
+

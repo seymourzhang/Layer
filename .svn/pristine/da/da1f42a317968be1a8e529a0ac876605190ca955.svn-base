@@ -1,0 +1,71 @@
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" 
+       ng-hide="backBtn" 
+       ui-sref="employeesTable">
+    </a>
+    <h1 class="title"> 添加员工信息 </h1> 
+   </div> 
+   <ion-content class="has-header"> 
+    <div class="list"> 
+   <label class="item item-input"> 
+      <span class="input-label fontColor">
+      姓名
+      </span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type         =  "text" 
+                 ng-model     =  "tempVar.userTemp.name" 
+                 placeholder  =  "员工名字"/> 
+   </label>
+
+   <label class="item item-input"> 
+      <span class="input-label fontColor">
+      手机号码
+      </span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type         =  "number" 
+                 ng-model     =  "tempVar.userTemp.tele" 
+                 placeholder  =  "员工手机号码"/> 
+   </label>
+
+   <label class="item item-input item-select"> 
+    <span class="input-label fontColor">角色</span>
+     <i class="icon ion-ios-arrow-forward"></i> 
+     <select ng-model="tempVar.userTemp.role" 
+             ng-change="JudgeHouse()"> 
+        <option value="">请选择</option> 
+        <option value        =  "{{key}}" 
+                ng-repeat    =  "(key,val) in myConfig.role" 
+                ng-selected  =  "key==tempVar.userTemp.role">
+                {{val}}
+        </option> 
+    </select> 
+   </label> 
+     <div class="list" ng-show="houseAffiliation"> 
+
+      <div class="item item-divider">
+        请选择所属栋号 
+      </div> 
+      
+      <ion-checkbox ng-repeat   =  "item in devList"
+                    ng-model    =  "item.checked" 
+                    ng-checked  =  "item.checked"
+                    ng-change   =  "testEEE()">
+          {{ item.text }}
+        </ion-checkbox>
+        
+     </div> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <div class="middle"> 
+      <a class           =  "button  button-balanced saveBtn" 
+         nav-transition  =  "android" 
+         ng-click        =  "save()">保   存</a> 
+     </div> 
+    </div> 
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+  </ion-view> 

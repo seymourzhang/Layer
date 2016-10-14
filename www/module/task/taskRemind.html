@@ -1,0 +1,191 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      任务提醒
+    </h1>
+    <a class="button icon ion-gear-a button-clear" ng-hide="setBtn" ui-sref="taskSet"></a>
+</div>
+	<ion-content class="has-header" overflow-scroll="true" style="overflow: hidden">
+    
+    <div  style="width             :  100%     ;
+                 height            :  40rem    ;
+                 background-color  :  #fff     ;
+                 position          :  relative ;
+                 top               :  -1rem    ;
+                 left              :  0rem     ;">
+    </div>
+
+      <ion-side-menus>
+          <!-- 中间内容 -->
+          <ion-side-menu-content>
+
+            <div class="fullScreen" style="background:#FFF;">
+		    	<div style="height:15%;width:100%;">
+		    		<label class="item item-input item-select" style="border:solid 0px #fff; border-bottom:solid 1px #878787;  position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+		                <span class="input-label" style="color: rgba(47, 127, 255, 1)">栋舍号</span>
+		                  <i class="icon ion-ios-arrow-forward"></i> 
+		                    <select ng-model="taskRemindData.selectHouse"
+		                            ng-change="judgeHouse()"> 
+		                        <option value        =  "{{item}}" 
+		                                ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+		                                ng-selected  =  "item.HouseId == selectHouse">
+		                                {{item.HouseName}}栋
+		                        </option> 
+		                    </select> 
+		            </label>
+		            <label class="item item-input" style="position:relative;">
+				        <span class="input-label" style="font-size:13px;color: #000;">截止昨日,<span style="color:red;">{{taskRemindData.UnCompleteTaskNum}}</span>个未处理,<span style="color:red;">{{taskRemindData.delayCount}}</span>个延后,<span style="color:red;">{{taskRemindData.cancleCount}}</span>个取消。</span> <button class="button button-small button-balanced" style="position:absolute;top:6px;right:10px; width:80px;" ng-click="toggleRight()">日龄筛选</button>
+				    </label>
+		    	</div>
+		    	<br>
+		    	<div style="position:relative;top:1rem;left:0rem;
+	                        overflow-x:hidden;overflow-y:scroll;
+	                        min-height:100%;
+	                        max-height:100%;">
+			    	<div style="height:40%;width:100%; color:#666666;" ng-repeat="item in taskRemindData.TskInfo">
+			    		<div style="width             :  100%     ;
+				      				height            :  2rem     ;
+				      				background-color  :  #a5d5a9  ;
+				      				position          :  relative ;
+			                        top               :  0rem     ;
+			                        left              :  0rem     ;"
+			                  ng-style="{{judgeDaysAge(item)}}">
+			                <p class="middle" style="position: relative;  top:0.3rem;  left:0rem;  font-size:1.2rem; color:#FFF;">{{item.TskGrpName}}</p>
+			            </div>
+			            <table style="width:100%;table-layout:fixed;word-break:break-;" >
+				    		<tr ng-repeat  =  "sku in item.TaskDetail">
+				    			<td class="hiddenTableLine" style=" height:2rem; width:50%; vertical-align:middle;" ng-style="{{judgeStateUpdateColor(sku)}}">
+				    				<span style="position:relative;left:0.5rem;">
+				    					{{sku.TaskName}}
+				    					<!-- {{sku.dealStatus}} -->
+				    				</span>
+				    			</td>
+				    			<td class="hiddenTableLine" style="width:50%; vertical-align:middle;">
+				    				<form style="position:relative;top:0rem;left:0rem;">
+										<label>
+											<input type="radio" ng-model="sku.dealStatus" ng-checked="sku.dealStatus=='01'" value="01" ng-click="judgeTaskState('01',sku)" 
+											ng-disabled="sku.UpdateFlag=='N' || sparraw_user_temp.Authority.TaskDeal == 'Read' " >
+											&nbsp;完成&nbsp;
+										</label>
+										<label>
+											<input type="radio" ng-model="sku.dealStatus" ng-checked="sku.dealStatus=='02'" value="02" ng-click="judgeTaskState('02',sku)" 
+											ng-disabled="sku.UpdateFlag=='N' || sparraw_user_temp.Authority.TaskDeal == 'Read' " >
+											&nbsp;延后&nbsp;
+										</label>
+										<label>
+											<input type="radio" ng-model="sku.dealStatus" ng-checked="sku.dealStatus=='03'" value="03" ng-click="judgeTaskState('03',sku)" 
+											ng-disabled="sku.UpdateFlag=='N' || sparraw_user_temp.Authority.TaskDeal == 'Read' " />
+											&nbsp;取消&nbsp;
+										</label>
+									</form>
+				    			</td>
+				    		</tr>
+				    	</table>
+			    	</div>
+			    	<div  style="width             :  100%     ;
+				                 height            :  9rem     ;
+				                 background-color  :  #FFF     ;
+				                 position          :  relative ;
+				                 top               :  0rem     ;
+				                 left              :  0rem     ;">
+				    </div>
+		    	</div>
+		    </div>
+
+
+
+
+          </ion-side-menu-content>
+          <!-- 右侧菜单 -->
+          <ion-side-menu side="right" width="270" style="background-color: rgba(239, 239, 244, 1);">
+              <div class="fullScreen">
+		    	<!-- <label class="item item-input item-select"> 
+		            <span class="input-label fontColor">起始日龄 </span>
+		              <i class="icon ion-ios-arrow-forward"></i> 
+		                <select ng-model="taskRemindData.AgeBegin"> 
+		                    <option value        =  "{{key}}" 
+		                            ng-repeat    =  "(key,val) in myConfig.logStart" 
+		                            ng-selected  =  "key==taskRemindData.AgeBegin">
+		                            {{val}}
+		                    </option> 
+		                </select> 
+		          </label>
+
+		          <label class="item item-input item-select"> 
+		            <span class="input-label fontColor">结束日龄 </span>
+		              <i class="icon ion-ios-arrow-forward"></i> 
+		                <select ng-model="taskRemindData.AgeEnd"> 
+		                    <option value        =  "{{key}}" 
+		                            ng-repeat    =  "(key,val) in myConfig.logEnd" 
+		                            ng-selected  =  "key==taskRemindData.AgeEnd">
+		                            {{val}}
+		                    </option> 
+		                </select> 
+		          </label> -->
+
+
+
+		          <label class="item item-input item-select"> 
+		            <span class="input-label fontColor">日龄选择</span>
+		              <i class="icon ion-ios-arrow-forward"></i> 
+		                <select ng-model="taskRemindData.TaskTimeSlot"> 
+		                    <option value        =  "{{key}}" 
+		                            ng-repeat    =  "(key,val) in myConfig.taskTimeSlot" 
+		                            ng-selected  =  "key==taskRemindData.TaskTimeSlot">
+		                            {{val}}
+		                    </option> 
+		                </select> 
+		          </label>
+
+
+
+
+
+		              <br />
+		              <a class           =  "button button-small button-light" 
+		                 ng-click        =  "judgeHouse('sidebarSearch')" 
+		                 nav-transition  =  "android"
+		                 style           =  "width     :  80px      ;
+		                                     height    :  10px      ;
+		                                     position  :  relative  ; 
+		                                     top       :  0rem      ; 
+		                                     left      :  11rem     ;" >
+		                  确定
+		              </a> 
+		              <br />
+		              <a class           =  "button button-small button-light" 
+		                 ng-click        =  "cancel()" 
+		                 nav-transition  =  "android"
+		                 style           =  "width     :  80px      ;
+		                                     height    :  10px      ;
+		                                     position  :  relative  ; 
+		                                     top       :  -2rem      ; 
+		                                     left      :  2rem      ;">
+		                  取消
+		              </a> 
+
+		    </div>
+
+
+
+          </ion-side-menu>
+      </ion-side-menus>
+
+
+
+    </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-view>

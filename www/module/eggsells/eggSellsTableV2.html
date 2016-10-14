@@ -1,0 +1,142 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+    <a class="button icon ion-chevron-left button-clear" ng-click="backFun()" ></a>
+    <!-- ui-sref="" -->
+    <h1 class="title">
+      销售记录
+  </h1>
+  <a class="button" id="navSaveBtn" href="#/module/eggsells/eggSellsTable/eggSellsReport" ng-click="goEggSellsTable()">日报</a>
+   <!-- href="#/module/eggsells/eggSellsTable/eggSellsReport" -->
+</div>
+
+<ion-content class="has-header">
+	<div style="position: relative; 
+		top:0.5rem; 
+		left:0.0rem;
+		width:106%;
+		height:30px;
+		background-color: #fff;">
+		<label style="position: relative; 
+		left:1rem;
+		width:50%">
+		今天：{{farmData.today}}
+		</label>
+	</div> 
+	
+    <div class="list"> 
+      <label class="item item-input"> 
+        <span class="input-label fontColor" >销售日期 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+		
+		<ionic-datepicker input-obj="datepickerObjectPopup">
+                <input type="text" id="place_dateId" ng-model="farmData.selectDate" placeholder="请点击选择" readonly="readonly" style="background:#FFF;"/>
+                </ionic-datepicker>
+				
+		<!--
+        <select ng-model="farmData.selectMonth"
+        ng-change="changeMonth()"> 
+			<option value        =  "{{item}}" 
+			ng-repeat    =  "item in farmData.months"
+			ng-selected  =  "item == farmData.place_date">
+			{{item}}
+			</option> 
+		</select>-->
+	</label>
+	
+	<div class="item item-divider">
+        合格蛋销售
+      </div> 
+	   
+	  
+	  <label class="item item-input"> 
+        <span class="input-label fontColor">销售数量</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" type      =  "number" ng-model = "farmData.sellData.good_salebox_num" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">箱</p>
+      </label>
+	  
+
+      <label class="item item-input item-select"> 
+        <span class="input-label fontColor">销售规格</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "farmData.sellData.good_box_size"
+			ng-change  =  "selectGuige()"> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.EggBoxNorms" 
+                        ng-selected  =  "key == farmData.sellData.good_box_size">{{val}}斤/箱</option> 
+            </select>
+			
+      </label>
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">销售单价</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "farmData.sellData.good_price_value"/>
+            <p style="position: absolute; top:15px; right:1rem; width:40px; height:1.5rem;">元/箱</p>
+      </label>
+	  
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">销售金额</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input readonly="readonly" type      =  "number" ng-model = "farmData.sellData.good_sale_money"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 	
+	  
+
+     
+	  
+	  <div  height="25" style="position:relative; left:0px; top:0px;background-color:#F4F4F4;">
+          
+          <ion-toggle ng-model="farmData.checked" ng-change="pushNotificationChange()" style="position:relative; left:0px; top:0px; height:50px;  border:0px solid #b7e9c0; background:url(img/clear_image.png);" ng-checked = "true">
+           破损蛋单独销售
+          </ion-toggle>
+	  
+	  </div>
+	  <div id="brokenEggsDIV">
+		  <label class="item item-input"> 
+			<span class="input-label fontColor">销售数量</span> 
+			  <i class="icon ion-ios-arrow-forward"></i> 
+				<input ng-change="forageTotal(5)" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "farmData.sellData.broken_salebox_num"/>
+				<p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">箱</p>
+		  </label>
+		  
+
+		  <label class="item item-input"> 
+			<span class="input-label fontColor">销售单价</span> 
+			  <i class="icon ion-ios-arrow-forward"></i> 
+				<input ng-change="forageTotal(6)" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "farmData.sellData.broken_price_value"/>
+				<p style="position: absolute; top:15px; right:1rem; width:40px; height:1.5rem;">元/箱</p>
+		  </label>
+		  
+
+		  <label class="item item-input"> 
+			<span class="input-label fontColor">销售金额</span> 
+			  <i class="icon ion-ios-arrow-forward"></i> 
+				<input readonly="readonly" type      =  "number" ng-model = "farmData.sellData.broken_sale_money"/>
+				<p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+		  </label> 
+		  
+		  <div class="item item-divider">
+		  </div>
+	</div>
+	  
+	<label class="item item-input"> 
+        <span class="input-label fontColor">鸡粪销售</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "farmData.sellData.chicken_manure"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+
+     <br /> 
+     <div class="middle">
+		<a class="button  button-balanced saveBtn" ng-click="save()">保   存</a>
+	</div>
+
+
+    </div> 
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+</ion-view>

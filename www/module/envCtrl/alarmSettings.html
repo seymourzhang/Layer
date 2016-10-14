@@ -1,0 +1,197 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="envMonitoring"></a>
+    <h1 class="title">
+      报警设置
+    </h1>
+  <a class="button icon button-clear" ng-click="Clicksave()">保存</a>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+
+      <div class="item" style="background: #FFF;"   ui-sref="voiceSettings">
+        <strong style="color: #ABABAB;">语音设置</strong>
+         <button class="button button-small button-light"  style="position:absolute;right:10px; top:10px; background:rgba(51, 205, 95, 1);color:#FFF;border: solid; 0px #FFF;">点击进入</button>
+      </div>
+      <br>
+      <div class="item" style="background: #FFF;">
+        <strong style="color: #ABABAB;">报警设置</strong>
+        <img src="img/icon/160913_Img/helpImg.png" height="25" width="25" style="position:absolute;right:18px;" on-tap="openFun()"/>
+      </div>
+
+    <label class="item item-input item-select"> 
+        <span class="input-label fontColor">栋舍号 </span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model="tempVar.AlarmSetting.HouseId" ng-change="testMethods()"> 
+                <!-- <option value="{{item.id}}" ng-repeat="item in sparraw_user_temp.houseinfos" ng-selected="item.id==tempVar.AlarmSetting.HouseId">{{item.houseName}}</option>  -->
+                <option value="{{item.HouseId}}" ng-repeat="item in sparraw_user_temp.userinfo.houses" ng-selected="item.HouseId==tempVar.AlarmSetting.HouseId">{{item.HouseName}}</option> 
+            </select> 
+     </label> 
+
+    <label class="item item-input item-select"> 
+      <span class="input-label fontColor">报警延迟 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="tempVar.AlarmSetting.Delay">  
+              <option value="{{key}}" ng-repeat="(key,val) in myConfig.Delay" ng-selected="key==tempVar.AlarmSetting.Delay">{{val}}</option> 
+          </select> 
+     </label>
+
+     <ion-toggle ng-model="tempVar.tempCpsation" ng-change="temperatureOffsetChange()">
+         温度补偿
+     </ion-toggle>
+
+     <label class="item item-input" ng-show="showTempCpsationVal"> 
+        <span class="input-label fontColor">补偿数值</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="text" ng-model="tempVar.AlarmSetting.tempCpsationVal" /> 
+      </label> 
+      <label class="item item-input item-select">
+            <span class="input-label fontColor">报警方式 </span>
+            <i class="icon ion-ios-arrow-forward"></i>
+            <select ng-model="tempVar.AlarmSetting.alarmProbe">
+                <option value="{{key}}" ng-repeat="(key,val) in myConfig.alarmProbe" ng-selected="key==tempVar.AlarmSetting.alarmProbe">{{val}}</option>
+            </select>
+        </label>
+
+     <label class="item item-input"> 
+      <span class="input-label fontColor">选择报警探头</span>
+      </label>
+          <li class="item item-checkbox" style="height:15px;line-height:0px;padding-left:250px;">
+              <label class="checkbox"><input type="checkbox" ng-model="tempVar.AlarmSetting.effAlarmProbe.tempLeft1"></label>
+              前区温度1
+          </li>  
+          <li class="item item-checkbox" style="height:15px;line-height:0px;padding-left:250px;">
+              <label class="checkbox"><input type="checkbox" ng-model="tempVar.AlarmSetting.effAlarmProbe.tempLeft2"></label>
+              前区温度2
+          </li> 
+          <li class="item item-checkbox" style="height:15px;line-height:0px;padding-left:250px;">
+              <label class="checkbox"><input type="checkbox" ng-model="tempVar.AlarmSetting.effAlarmProbe.tempMiddle1"></label>
+              中区温度
+          </li> 
+          <li class="item item-checkbox" style="height:15px;line-height:0px;padding-left:250px;">
+              <label class="checkbox"><input type="checkbox" ng-model="tempVar.AlarmSetting.effAlarmProbe.tempRight1"></label>
+              后区温度1
+          </li> 
+          <li class="item item-checkbox" style="height:15px;line-height:0px;padding-left:250px;">
+              <label class="checkbox"><input type="checkbox" ng-model="tempVar.AlarmSetting.effAlarmProbe.tempRight2"></label>
+              后区温度2
+          </li>  
+
+     <label class="item item-input"> 
+        <span class="input-label fontColor">点温差报警</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="number" ng-model="tempVar.AlarmSetting.pointAlarm" style="position: absolute; top:0.85rem; right:0.8rem; width:3.5rem; height:1.5rem;" />
+            <p style="position: absolute; top:15px; right:-1rem; width:3.5rem; height:1.5rem;">℃</p> 
+      </label>
+
+        <label class="item item-input"> 
+        <span class="input-label fontColor">目标温度</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="number" ng-model="tempVar.AlarmSetting.tarTemp" style="position: absolute; top:0.85rem; right:0.8rem; width:3.5rem; height:1.5rem;" />
+            <p style="position: absolute; top:15px; right:-1rem; width:3.5rem; height:1.5rem;">℃</p> 
+        </label>
+        <label class="item item-input"> 
+        <span class="input-label fontColor">低报温度</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="number" ng-model="tempVar.AlarmSetting.minTemp" style="position: absolute; top:0.85rem; right:0.8rem; width:3.5rem; height:1.5rem;" />
+            <p style="position: absolute; top:15px; right:-1rem; width:3.5rem; height:1.5rem;">℃</p> 
+        </label>
+        <label class="item item-input"> 
+        <span class="input-label fontColor">高报温度</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="number" ng-model="tempVar.AlarmSetting.maxTemp" style="position: absolute; top:0.85rem; right:0.8rem; width:3.5rem; height:1.5rem;" />
+            <p style="position: absolute; top:15px; right:-1rem; width:3.5rem; height:1.5rem;">℃</p> 
+        </label>
+
+
+        <br>
+      <div style="text-align:center;">
+        <button class="button button-balanced  button-positive" style="width:80%;" ng-click="copyFun()">一键复制到所有栋</button>
+      </div>
+
+
+
+
+      <!-- <div class="item" style="background: #EFEFF9;">
+        <strong style="color: #ABABAB;">语音设置</strong>
+      </div>
+    <div class="list"> 
+       <div  height="25" style="position:relative; left:0px; top:0px;background-color:#EFEFF9;">
+        <ion-toggle ng-model="farmData.checked" ng-change="pushNotificationChange()" class="fontColor">
+         是否开启
+     </ion-toggle>
+
+
+      </div>
+      
+      <label class="item item-input"> 
+      <span class="input-label fontColor">第一报警人</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+        <input readonly="readonly" style="text-align:right;background-color:white;" type =  "text" ng-model = "farmData.alarmer1" />
+        <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;"></p>
+      </label>
+      
+
+      <label class="item item-input item-select"> 
+      <span class="input-label fontColor">第二报警人</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+        <select id="erji" ng-model   =  "farmData.alarmer2"
+        ng-change  =  "selectUser()"> 
+          <option value        =  "{{item.id}}" 
+              ng-repeat    =  "item in farmData.alarmer2s" 
+              ng-selected  =  "item.id == farmData.alarmer2">{{item.name}}</option> 
+        </select>
+      </label>
+
+      <label class="item item-input item-select"> 
+      <span class="input-label fontColor">第三报警人</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+        <select  id="sanji" ng-model   =  "farmData.alarmer3"> 
+          <option value        =  "{{item.id}}" 
+              ng-repeat    =  "item in farmData.alarmer3s" 
+              ng-selected  =  "item.id == farmData.alarmer3">{{item.name}}</option> 
+        </select>
+        
+      </label>
+
+
+    </div> 
+    <br>
+    <br> -->
+      
+    </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+<script id="useHelp.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-balanced">
+    <a class="button" ng-click="closeFun()">返回</a>
+      <h1 class="title">使用帮助</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div style="position: relative; left: 3%; width: 94%;height: 100%;">
+        <br>
+        <p style="position:relative; top:5px;"><strong>报警延迟</strong></p>
+        <p style="position:relative; top:-5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要起到防止误报警的作用，用户可以自行设置相应延迟时间避免由于各种原因出现的瞬时性报警，系统默认时间为3分钟。</p>
+        <p style="position:relative; top:5px;"><strong>温度补偿</strong></p>
+        <p style="position:relative; top:-5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当室外温度高于用户设置的高报警戒线时，系统以室外温度作为高报警戒线进行报警。防止夏天室外温度过高，从而导致频繁报警。</p>
+        <!-- <p style="position:relative; top:5px;"><strong>点温差报警</strong></p>
+        <p style="position:relative; top:-5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要用于了解和分析舍内温度均匀度情况。系统将自动计算所有勾选的有效探头中最高温与最低温的温差值，如果超出设置的数值，则会触发报警。</p> -->
+        <p style="position:relative; top:5px;"><strong>报警方式</strong></p>
+        <p style="position:relative; top:-5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要体现在触发温度异常报警的两种模式，独立温区模式下判断每个已勾选的有效探头温度从而触发报警，而平均温度模式下判断每个已勾选的有效探头温度组成的平均温度从而触发报警。</p>
+        <p style="position:relative; top:5px;"><strong>选择报警探头</strong></p>
+        <p style="position:relative; top:-5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;勾选的探头系统视为有效，如果不选，则该探头不会触发报警，并且不参与平均温度的计算。</p>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+

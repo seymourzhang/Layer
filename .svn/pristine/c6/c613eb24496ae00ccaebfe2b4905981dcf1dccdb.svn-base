@@ -1,0 +1,33 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      销售报表
+    </h1>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+    	<div>
+    		<!-- <p style="font-size:1.2rem;
+    				  position: relative; 
+	    			  top:1rem; 
+	    			  left:1rem;">
+    			当前批次分析
+    		</p>
+            <br/> -->
+            <ion-list>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('xsjl')">
+                      销售记录
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('xsrb')">
+                      销售日报
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                <ion-item class="item-icon-right" ng-click="pointDevelop('jgqx')">
+                      价格曲线
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
+        </div>    
+    </ion-content>
+</ion-view>

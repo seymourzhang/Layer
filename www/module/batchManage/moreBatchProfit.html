@@ -1,0 +1,247 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="batchManage"></a>
+    <h1 class="title">
+      多批盈利查询
+    </h1>
+  <select class="button"
+          ng-model="moreBatchProfitData.transferUnit"
+          ng-change="inquireMultiProfit()"
+          style="background-color:transparent;
+                 border:solid 0px;
+                 appearance:none;
+                 -moz-appearance:none;
+                 -webkit-appearance:none;
+                 font-size:1rem; 
+                 color:rgba(255, 255, 255, 1);
+                 position: relative; 
+                 top:0rem; 
+                 left:70%;">
+            <option value        =  "{{key}}" 
+                    ng-repeat    =  "(key,val) in myConfig.inquireUnits" 
+                    ng-selected  =  "key==moreBatchProfitData.transferUnit">
+                    {{val}}
+            </option>
+
+  </select>
+  <i class="icon ion-android-arrow-dropdown" style="position:absolute; top:0.8rem;right:0.5rem;"></i>
+
+</div>
+    <div class="bar bar-subheader" style="border:1px solid #fff; height:5.3rem; background-color:#f5f5f5;">
+
+     <!--  <div style="width: 100%;  height:2.8rem;">
+          <span style="position: relative; 
+                       top:0.8rem; 
+                       left:0.8rem;
+                       font-size: 1rem;">
+              盈利单位（<span ng-bind="moreBatchProfitData.ViewUnit"></span>)
+              
+          </span>
+      </div> -->
+
+      <table class="tableLine middle"  style="position: relative; 
+                                              top:0.1rem; 
+                                              left:-0.4rem;
+                                              width:103.5%;
+                                              height:6rem;
+                                              color:#E3E3E3E3;
+                                              background-color:#f5f5f5;">
+        <tr ng-repeat="item in moreBatchProfitData.OverView" style="height:2rem;">
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;"
+                  ng-style="{{judgeNeedBold(item)}}">
+                {{item.ItemName}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index1}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index2}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index3}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index4}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index5}}
+            </span>
+          </td>
+
+
+        </tr>
+      </table>
+
+    </div>
+
+
+    <ion-content class="has-header" style = "background-color:#f5f5f5;">
+      
+
+
+      <div style="width: 100%;  height:11rem;">
+
+      </div>
+
+      <table class="tableLine middle"  style="position: relative; 
+                                              top:0.1rem; 
+                                              left:0rem;
+                                              width:100%;
+                                              color:#E3E3E3E3;
+                                              background-color:#f5f5f5;">
+        <tr ng-repeat="item in moreBatchProfitData.Detail" style="height:2rem;">
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;"
+                  ng-style="{{judgeCost(item)}}">
+                {{item.ItemName}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index1}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index2}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index3}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index4}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-size: 0.9rem;">
+                {{item.index5}}
+            </span>
+          </td>
+
+
+        </tr>
+      </table>
+
+
+      <!-- <div style="width: 100%;  height:2.2rem;">
+          <span style="position: relative; 
+                       top:0.5rem; 
+                       left:0.8rem;
+                       font-size: 1rem;">
+              结算单价
+          </span>
+      </div>
+
+
+      <table class="tableLine middle"  style="position: relative; 
+                                              top:0.1rem; 
+                                              left:0rem;
+                                              width:100%;
+                                              height:6rem;
+                                              color:#E3E3E3E3;
+                                              background-color:#f5f5f5;
+                                              font-size: 0.9rem;">
+        <tr ng-repeat="item in moreBatchProfitData.DealPrice">
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;
+                         font-weight: bold;
+                         font-size: 1rem;">
+                {{item.ItemName}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;">
+                {{item.index1}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;">
+                {{item.index2}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;">
+                {{item.index3}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0rem; 
+                         left:0.3rem;">
+                {{item.index4}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:15%;">
+            <span style="position: relative; 
+                         top:0.3rem; 
+                         left:0rem;">
+                {{item.index5}}
+            </span>
+          </td>
+
+
+        </tr>
+      </table> -->
+
+
+    </ion-content>
+</ion-view>

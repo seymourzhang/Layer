@@ -1,0 +1,74 @@
+
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" 
+        ui-sref="landingPage">
+    </a> 
+    <h1 class="title"> 
+      用户注册(1/4) 
+    </h1>
+    <a class="button icon button-clear" ng-click="save()">保存</a> 
+   </div> 
+   <ion-content class="has-header"> 
+    <div> 
+     <!-- <div> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <div class="middle"> 
+       <img src="img/icon/addressbook.png" 
+            height="78" 
+            width="88" /> 
+      </div> 
+      <br /> 
+      <br /> 
+      <br /> 
+     </div>  -->
+     <div class="list"> 
+      <label class="item item-input"> 
+        <input type         =  "text" 
+               placeholder  =  "姓名"
+               ng-model     =  "sparraw_user_temp.userinfo.name" />
+      </label>
+
+      <!-- <label class="item item-input"> 
+        <input type         =  "text" 
+               placeholder  =  "手机号" 
+               ng-model     =  "sparraw_user_temp.userinfo.phone" /> 
+      </label> -->
+
+      <label class="item item-input"> 
+        <input type         =  "number" 
+               placeholder  =  "手机号" 
+               ng-blur      =  "validationPhone()" 
+               ng-model     =  "sparraw_user_temp.userinfo.phone" /> 
+      </label>
+      
+
+      <label class="item item-input">
+        <input type         =  "password" 
+               placeholder  =  "设置密码" 
+               ng-model     =  "sparraw_user_temp.userinfo.password" />
+      </label>
+      
+      <label class="item item-input"> 
+        <input type         =  "password" 
+               placeholder  =  "确认密码" 
+               ng-model     =  "sparraw_user_temp.userinfo.confirmPassword" /> 
+      </label> 
+
+     </div> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <div class="middle"> 
+      <a class="button  button-balanced saveBtn" 
+         ng-click="save()" 
+         nav-transition="android">
+         保   存
+      </a>
+     </div> 
+    </div> 
+   </ion-content> 
+  </ion-view>

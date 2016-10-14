@@ -1,0 +1,58 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      关于
+    </h1>
+</div>
+    <ion-content class="has-header">
+    	<ul class="list">
+	        <li class="item">
+	        <p class="rightArrow">
+	          <span style="font-size: 1.1rem; color: #000;">{{App_Version}}</span>
+	        </p>
+	        <p>
+	        	<span style="font-size: 1.1rem; color: #000;">当前版本</span>
+	        </p>  
+	        </li>
+	        <li class="item">
+	        <p class="rightArrow">
+	          <a style="color:blue; text-decoration:underline;" ng-click="dlAPK()">
+            <span style="font-size: 1.1rem;">检查更新</span>
+            </a>
+	        </p>
+	        <p ng-click="queryVersion()" >
+	        	<span style="font-size: 1.1rem; color: #000;">升  级</span>
+	        </p>
+	        </li>
+	    </ul>
+
+	    <br />
+
+
+
+
+
+     	<ion-list>
+            <ion-item class="item-icon-right" ui-sref="functionIntroduce">
+                  <p style="font-size: 1.1rem; color: #000;">功能介绍</p>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" ui-sref="contactUs">
+                  <p style="font-size: 1.1rem; color: #000;">联系我们</p>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" ui-sref="feedBack">
+                  <p style="font-size: 1.1rem; color: #000;">使用小贴士</p>
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+
+
+
+
+
+    </ion-content>
+</ion-view>

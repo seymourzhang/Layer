@@ -1,0 +1,177 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+    <a class="button icon ion-chevron-left button-clear" ng-click="doBack()"></a>
+    <h1 class="title">
+      销售日报
+  </h1>
+  <a class="button" id="navSaveBtn" href="#/report/salesAnalyze/eggSellsList" >价格曲线</a>
+</div>
+
+
+<div class="bar bar-subheader" style="border:1px solid #fff; background:#fff; background-color:#fff;">
+		
+	<div style="position: relative; 
+	top:0.3rem; 
+	left:-0.6rem;
+	width:106%;
+	height:30px;
+	background-color: #fff;">
+	<label style="position: relative; 
+	left:1rem;
+	width:50%">
+	今天：{{farmData.today}}
+	</label>
+
+	<label style           =  "width     : 50%      ;
+								 position  :  absolute  ; 
+								 right      :  10px     ;
+								 top:-0.15rem;
+								 border    :  solid 0px #f2f3f4  ;" align="right">
+		<label style="position:absolute;right:90px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;top:3px;">销售年月：</label>
+		 <select ng-model="farmData.selectMonth"
+			ng-change="changeMonth()" style="position:absolute;right:15px;"> 
+			<option value        =  "{{item}}" 
+			ng-repeat    =  "item in farmData.months"
+			ng-selected  =  "item == farmData.place_date">
+			{{item}}
+			</option> 
+			</select>
+	</label>
+
+	</div> 
+	<!--
+    <div ng-hide="chooseDiv">
+      <label class="item item-input item-select" style="border:solid 0px #fff; border-bottom:solid 1px #878787;  position: relative;  top:0rem;  left:-1rem; height:3rem; width:110%; "> 
+        <span class="input-label" style="color: rgba(47, 127, 255, 1)">销售年月 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+        <select ng-model="farmData.selectMonth"
+        ng-change="changeMonth()"> 
+        <option value        =  "{{item}}" 
+        ng-repeat    =  "item in farmData.months"
+        ng-selected  =  "item == farmData.place_date">
+        {{item}}
+		</option> 
+		</select>
+	 </label>
+	</div>
+-->
+
+
+<div>
+ <table class="tableLine middle"  style="position: relative; 
+ top:0rem; 
+ left:-0.6rem;
+ width:106%;
+ height:2rem;
+ font-weight:bold;">
+ <tr style="height:1rem;"> 
+   <td class="tableLine" style="background:#E3E3E3;text-align:center;width:15%;" rowspan="2" >销售<br/>日期</td> 
+   <th class="tableLine" style="background:#E3E3E3;width:20%;" scope="col" colspan="2" >蛋品数量</th> 
+   <th class="tableLine" style="background:#E3E3E3;width:20%;" scope="col" colspan="2" >蛋品价格</th> 
+   <th class="tableLine" style="background:#E3E3E3;width:15%;" scope="col" rowspan="2">销售额<br/>元</th> 
+   <th class="tableLine" style="background:#E3E3E3;width:15%;" scope="col" rowspan="2">破损蛋<br/>元</th>
+   <th class="tableLine" style="background:#E3E3E3;width:15%;" scope="col" rowspan="2">鸡粪<br/>元</th> 
+</tr> 
+<tr style="height:1rem;"> 
+   <th  class="tableLine" style="background:#E3E3E3;" scope="col">斤</th> 
+   <th class="tableLine" style="background:#E3E3E3;" scope="col">箱</th> 
+   <th class="tableLine" style="background:#E3E3E3;" scope="col">元/斤</th> 
+   <th class="tableLine" style="background:#E3E3E3;" scope="col">元/箱</th> 
+      
+</tr> 
+</table>
+</div>
+</div>
+<ion-content class="has-header">
+
+<div id="blankDiv" style="width: 100%;  height:5rem; ">
+
+</div>
+
+<table style="position: relative;top:0rem;left:0rem;width:100%;color:#878787; border:solid 0px #FFF;table-layout:fixed;word-break:break-;">
+            <tr ng-repeat="item in farmData.dataInput" style="height:35px;" ng-style="{{hiddenEmptyData(item.sellDate)}}" >
+              
+              <td class="hiddenTableLine"style="width:15%;background:#E3E3E3; "><input class="middle" type="text" ng-model="item.sell_date" readonly="readonly" class="middle" style="background:#E3E3E3; position: relative; top:4px; left:0.2rem;width:80%;height:25px; color:#989898;"/></td>
+              
+              <td style="width:10%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.good_sale_weight" readonly="readonly"  ng-change="forageTotal(item.sellDate)" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:10%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.good_salebox_num" readonly="readonly"  ng-change="forageTotal(item.sellDate)" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:70%;height:25px;"/></td>
+              
+              <td style="width:10%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.good_price_kil" readonly="readonly"   style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:10%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.good_price_box" readonly="readonly"  ng-change="forageTotal(item.sellDate)" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:15%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.good_sale_money" readonly="readonly"  ng-change="forageTotal(item.sellDate)" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:70%;height:25px;"/></td>
+              
+              <td style="width:15%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="item.bad_sale_money" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+				
+			<td style="width:15%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="item.chicken_manure" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+			
+			
+              
+            </tr>
+			
+			
+						
+			<!--表格底部数据统计
+
+			<tr  style="height:35px;">
+				  
+				<td class="hiddenTableLine" style="width:18%;background:#E3E3E3; "><input class="middle" type="text" ng-init="defa='合计'" ng-model="defa" readonly="readonly" class="middle" style="background:#E3E3E3; position: relative; top:4px; left:0.2rem;width:80%;height:25px;color:#989898;font-size:13px; "/></td>
+				
+				
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Weight_good" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+				
+				
+				
+			   
+			   <td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_p_good" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+				
+				
+			   
+			   <td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_sum_good" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+				
+			   
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Weight_bad" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+					
+
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_p_bad" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+					
+
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_sum_bad" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+					
+				
+			</tr>
+-->
+			<!-- 本批累计 
+			<tr  style="height:35px;">
+				  
+				 <td class="hiddenTableLine"style="width:18%;background:#E3E3E3; "><input class="middle" type="text" ng-init="defa2='本批累计'" ng-model="defa2" readonly="readonly" class="middle" style="background:#E3E3E3; position: relative; top:4px; left:0.2rem;width:80%;height:25px;color:#989898;font-size:13px; "/></td>
+				
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Weight_good_breed" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+				
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_p_good_breed" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+			   
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_good_breed" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+							
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Weight_bad_breed" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_p_bad_breed" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+
+				<td class="hiddenTableLine" style="width:12.50%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="farmData.total_Price_bad_breed" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;color:#989898;"/></td>
+					
+			</tr>
+			-->
+
+          </table>
+		  
+
+
+<br />
+<!--
+<div class="middle">
+    <a class="button  button-balanced saveBtn" ng-click="save()">保   存</a>
+</div>
+-->
+</ion-content>
+</ion-view>

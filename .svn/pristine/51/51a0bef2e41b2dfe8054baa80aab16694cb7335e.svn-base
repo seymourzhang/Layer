@@ -1,0 +1,7 @@
+-- 1、新建数据库，名字为：sparrow，编码为：utf8
+create database sparrow_lc  default charset utf8;
+-- 2、建表结构，执行sparrow_table1.sql 以及 sparrow_table2.sql
+-- 3、建view以及SP
+-- 4、插入初始化数据，执行 DML文件夹下边的数据。
+
+

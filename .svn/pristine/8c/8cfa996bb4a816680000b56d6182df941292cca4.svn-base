@@ -1,0 +1,310 @@
+<html>
+ <head></head>
+ <body>
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <!-- 返回信息维护页面 -->
+    <a class    =  "button icon ion-chevron-left button-clear" 
+       ng-hide  =  "landingbackBtn" 
+       ui-sref  =  "infoSafeguard">
+    </a>
+    <a class="button button-clear" ng-hide="cancelBtn" ng-click="cancelEvent()">取消</a> 
+    <h1 class="title" 
+        ng-hide="registerTitle"> 
+      农场信息注册(2/4) 
+    </h1> 
+    <h1 class="title" ng-hide="landingTitle"> 
+      农场信息注册 
+    </h1>
+    <a class="button button-clear" ng-hide="visible" ng-click="startEdit()">编辑</a>
+   </div> 
+
+   <ion-content class="has-header">
+    <div class="list"> 
+     <label class="item item-input"> 
+        <span class="input-label fontColor">农场名称</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type       =  "text" 
+                   maxlength  =  "6" 
+                   ng-model   =  "sparraw_user_temp.farminfo.name" />
+     </label> 
+
+     <label class="item item-input item-select"> 
+        <span class="input-label fontColor">省</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "sparraw_user_temp.farminfo.address1" 
+                    ng-change  =  "select('Region1')"> 
+              <option value="">请选择</option> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.address1" 
+                        ng-selected  =  "key==sparraw_user_temp.farminfo.address1">
+                        {{val}}
+                </option> 
+            </select>
+     </label> 
+
+     <label class="item item-input item-select"> 
+        <span class="input-label fontColor">地级市 </span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "sparraw_user_temp.farminfo.address2" 
+                    ng-change  =  "select('Region2')"> 
+              <option value="">请选择</option> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.address2" 
+                        ng-selected  =  "key==sparraw_user_temp.farminfo.address2">{{val}}</option> 
+            </select> 
+     </label> 
+
+     <label class="item item-input item-select"> 
+        <span class="input-label fontColor">市/县 </span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "sparraw_user_temp.farminfo.address3" 
+                    ng-change  =  "select('Region3')"> 
+              <option value="">请选择</option> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.address3" 
+                        ng-selected  =  "key==sparraw_user_temp.farminfo.address3">
+                        {{val}}
+                </option> 
+            </select> 
+     </label> 
+
+    <label class="item item-input item-select"> 
+      <span class="input-label fontColor">建厂时间</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model   =  "sparraw_user_temp.farminfo.buildDate"> 
+			<option value="">请选择</option> 
+            <option value        =  "{{key}}" 
+                      ng-repeat    =  "(key,val) in myConfig.foundedTime" 
+                      ng-selected  =  "key==sparraw_user_temp.farminfo.buildDate">
+                      {{val}}
+            </option> 
+          </select> 
+     </label>
+
+     <label class="item item-input"> 
+      <span class="input-label fontColor">栋舍数量</span> 
+        <i class="icon ion-ios-arrow-forward"></i>
+          <input type      =  "number" ng-model   =  "sparraw_user_temp.farminfo.houseNum"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">栋</p>
+     </label>
+
+     <div class="item item-divider">
+        每栋规模 
+      </div> 
+      <label class="item item-input"> 
+        <span class="input-label fontColor">排</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" ng-model = "sparraw_user_temp.farminfo.cageInfo_layer"/> 
+      </label> 
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">层</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" ng-model = "sparraw_user_temp.farminfo.cageInfo_row"/> 
+      </label>
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">每排长</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" ng-model = "sparraw_user_temp.farminfo.house_length"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">米</p>
+      </label>
+
+
+      
+
+    <!--  <label class="item item-input item-select"> 
+        <span class="input-label fontColor">乡 </span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "sparraw_user_temp.farminfo.address4" 
+                    ng-change  =  "select('Region4')"> 
+              <option value="">请选择</option> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.address4" 
+                        ng-selected  =  "key==sparraw_user_temp.farminfo.address4">
+                        {{val}}
+                </option>
+            </select> 
+     </label> -->
+
+     <!-- <label class="item item-input"> 
+      <span class="input-label fontColor">详细地址</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type         =  "text"
+                 placeholder  =  "街道/地址/门牌号" 
+                 ng-model     =  "sparraw_user_temp.farminfo.address5" /> 
+     </label> 
+
+     <label class="item item-input item-select"> 
+      <span class="input-label fontColor">合作公司 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="sparraw_user_temp.farminfo.corporation"> 
+            <option value="">请选择</option> 
+              <option value        =  "{{key}}" 
+                      ng-repeat    =  "(key,val) in myConfig.corporation" 
+                      ng-selected  =  "key==sparraw_user_temp.farminfo.corporation">
+                      {{val}}
+              </option> 
+          </select> 
+     </label> -->
+
+     <!-- <label class="item item-input item-select"> 
+      <span class="input-label fontColor">养殖品种 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model   =  "sparraw_user_temp.farminfo.feedBreeds" 
+                  ng-change  =  "judgeRaise()"> 
+            <option value="" >请选择</option> 
+              <option value        =  "{{key}}" 
+                      ng-repeat    =  "(key,val) in myConfig.breeding" 
+                      ng-selected  =  "key==sparraw_user_temp.farminfo.feedBreeds" 
+                      on-tap       =  "onTap()">
+                      {{val}}
+              </option>
+
+          </select> 
+     </label>  -->
+
+     <!-- <label class="item item-input item-select"> 
+      <span class="input-label fontColor">养殖方式 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model   =  "sparraw_user_temp.farminfo.feedtype" 
+                  ng-change  =  "judgeRaise()"> 
+            <option value="" >请选择</option> 
+              <option value        =  "{{key}}" 
+                      ng-repeat    =  "(key,val) in myConfig.feedtype" 
+                      ng-selected  =  "key==sparraw_user_temp.farminfo.feedtype" 
+                      on-tap       =  "onTap()">
+                      {{val}}
+              </option>
+
+          </select> 
+     </label> -->
+
+     <!-- <label class="item item-input item-select"> 
+      <span class="input-label fontColor">经营模式 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model   =  "sparraw_user_temp.farminfo.businessModle" 
+                  ng-change  =  "judgeRaise()"> 
+            <option value="" >请选择</option> 
+              <option value        =  "{{key}}" 
+                      ng-repeat    =  "(key,val) in myConfig.businessModel" 
+                      ng-selected  =  "key==sparraw_user_temp.farminfo.businessModle" 
+                      on-tap       =  "onTap()">
+                      {{val}}
+              </option>
+          </select> 
+     </label> -->
+
+     <!-- <div ng-show="farmingSize"> 
+      <div class="item item-divider">
+        笼养尺寸 
+      </div> 
+      <label class="item item-input"> 
+        <span class="input-label fontColor">层</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "sparraw_user_temp.farminfo.cageInfo_layer" /> 
+      </label> 
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">排</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "sparraw_user_temp.farminfo.cageInfo_row" /> 
+      </label>
+     </div> 
+
+      
+
+     <div> 
+      <div class="item item-divider">
+        鸡舍尺寸 
+      </div> 
+      <label class="item item-input"> 
+        <span class="input-label fontColor">内长</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "sparraw_user_temp.farminfo.house_length"/>
+            <label style="position  :  relative  ; 
+                          top       :  0rem      ; 
+                          left      :  -1rem     ;">
+              米
+            </label> 
+      </label> 
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">内宽</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "sparraw_user_temp.farminfo.house_width" />
+            <label style="position  :  relative  ; 
+                          top       :  0rem      ; 
+                          left      :  -1rem     ;">
+              米
+            </label> 
+      </label>
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">内高</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "sparraw_user_temp.farminfo.house_height" />
+            <label style="position  :  relative  ; 
+                          top       :  0rem      ; 
+                          left      :  -1rem     ;">
+              米
+            </label> 
+      </label> 
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">养殖面积</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type         =  "number" 
+                   placeholder  =  "平方米/栋 (鸡的实际活动面积)"
+                   ng-model     =  "sparraw_user_temp.farminfo.feedarea" /> 
+            <label style="position  :  relative  ; 
+                          top       :  0rem      ; 
+                          left      :  -1rem     ;">
+              平方米
+            </label> 
+      </label> 
+     </div>  -->
+     <br /> 
+     <br /> 
+     <br /> 
+     <div class="middle"> 
+      <a class           =  "button  button-balanced saveBtn" 
+         ng-hide         =  "saveAddBtn"  
+         ng-click        =  "saveAdd()" 
+         nav-transition  =  "android">
+         保   存
+      </a> 
+      <!-- 下面是修改农场上面是新增农场 -->
+      <a class           =  "button  button-balanced saveBtn" 
+         ng-hide         =  "saveUpdateBtn"  
+         ng-click        =  "saveUpdate()" 
+         nav-transition  =  "android">
+         保   存
+      </a> 
+     </div> 
+
+
+    </div> 
+   <div style="   background-image:url('img/icon/clear_image.png');
+                  position:absolute;
+                  left:0%;
+                  top:0%;
+                  width:100%;
+                  height:130%;
+                  z-index:2;"
+           ng-hide="sheerDiv"
+           ng-click="alert()">
+      </div>
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+  </ion-view> 
+ </body>
+</html>

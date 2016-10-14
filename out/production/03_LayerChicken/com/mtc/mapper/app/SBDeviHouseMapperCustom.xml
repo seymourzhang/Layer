@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtc.mapper.app.SBDeviHouseMapperCustom" >
+  <resultMap id="BaseResultMap" type="com.mtc.entity.app.SBDeviHouse" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="device_code" property="deviceCode" jdbcType="VARCHAR" />
+    <result column="farm_id" property="farmId" jdbcType="INTEGER" />
+    <result column="house_id" property="houseId" jdbcType="INTEGER" />
+    <result column="create_person" property="createPerson" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_person" property="modifyPerson" jdbcType="INTEGER" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <select id="selectByHouseId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select id, device_code, farm_id, house_id, create_person, create_date, create_time, 
+    modify_person, modify_date, modify_time
+    from s_b_devi_house
+    where house_id = #{houseId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByDeviandHouseId"  parameterType="map" resultMap="BaseResultMap" >
+    select id, device_code, farm_id, house_id, create_person, create_date, create_time, 
+    modify_person, modify_date, modify_time
+    from s_b_devi_house
+    where house_id = #{houseId} AND
+     device_code = #{device_code}
+  </select>
+  <select id="selectByDeviceCode"  parameterType="map"   resultMap="BaseResultMap"  >
+    select id, device_code, farm_id, house_id, create_person, create_date, create_time, 
+    modify_person, modify_date, modify_time
+    from s_b_devi_house
+    where  device_code = #{device_code}
+  </select>
+   <delete id="deleteByHouseId" parameterType="java.lang.Integer" >
+    delete from s_b_devi_house
+    where house_id = #{id,jdbcType=INTEGER}
+  </delete>
+</mapper>

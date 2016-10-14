@@ -1,0 +1,151 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="about"></a>
+    <h1 class="title">
+      使用说明
+    </h1>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+<!-- <h4  align="center" style="font-family:Microsoft YaHei" >
+智慧农场肉鸡版使用说明
+</h1> -->
+
+<p class="p_simple" style="text-indent:2em;margin-top:1rem;">
+  智慧农场肉鸡版是由上海农汇信息科技有限公司开发的国内首款手机APP养鸡软件，该软件结合环境检测物联网(简称农汇通)，可为肉鸡养殖户提供温湿度和断电的监测报警、生产日报、任务提醒、数据分析、盈利分析等五大功能。公司正在进一步开发养殖指导、鸡病防治、市场行情等更多功能，从而使养鸡真正实现互联网化，敬请期待。
+</p>
+<!-- <p class="p_simple">
+  <a href="#tips">如何使用软件</a>&nbsp;&nbsp;&nbsp; <a href="#tips">农汇通设备介绍</a>
+</p> -->
+<h5 class="p_simple" style="font-weight:bold;" >如何使用软件</h5>
+<p class="p_simple" style="text-indent:2em;">
+  这是一款简单易学的手机软件，相信您很快就能熟练掌握。考虑到您首次使用，我们还是建议您仔细阅读以下说明。
+</p>
+<p class="p_simple" style="text-indent:2em;margin-top:-10px;">
+  在正式注册前，如果您想先了解一下我们的软件，您可以选“试用账号登录”进去浏览一下。当您用真实的手机号注册后，请按以下步骤操作。
+</p>
+<h5 class="p_simple" style="font-weight:bold;" >第一步：完成系统注册</h5>
+<ul class="ul_simple" style="list-style-type:decimal;">
+    <li>场长用手机号注册第一个用户。</li>
+    <li>登录成功后，点击【主页面】左上角<img src="img/home_setting.png" style="width:25px;height:25px;"/>，完成农场信息、栋舍信息和员工信息的设置。</li>
+    <li>通知员工，以登记好的真实手机号和初始密码(123456)登录。</li>
+    <li>员工登录后在“信息维护”界面，可以进行密码修改。</li>
+</ul>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+    <font style="">提醒：</font>
+    <li>系统是以手机号来识别用户的，请输入正确的手机号码。</li>
+    <li>如手机号变更，请及时到“员工信息”中更新，然后用新手机号和初始密码(123456)登录。</li>
+    <li>栋舍信息中农汇通设备编号是和实际安装的设备关联的，请仔细核对。</li>
+    <li>设置完成后，您可以随时进入“信息维护”更改有关信息。</li>
+</ul>
+</p>
+
+<h5 class="p_simple" style="font-weight:bold;" >第二步：完成报警设置</h5>
+<p class="p_simple" style="text-indent:2em;">
+如果您的鸡舍已安装好农汇通设备和探头，请点击【主页面】<img src="img/home_mornitor.png" style="width:25px;height:25px;"/>，进入后点右上角<img src="img/home_setting.png" style="width:25px;height:25px;"/>，按提示完成报警设置。
+</p>
+<ul class="ul_simple" style="list-style-type:decimal;">
+    <li>栋舍号：由于每一栋舍的报警条件可能会不一致，所以需要逐栋设置。第一次设置时，您可以选择一次性复制，以后根据每栋的实际情况再做修改。</li>
+    <li>报警方式：独立温区报警是指任何一个探头区域(前区、中区、后区)出现异常均可独立报警；平均温度报警是指各区域的平均温度出现异常才报警。相对而言，独立温区报警的精细度更高，但报警几率也会随之增加。</li>
+    <li>选择报警探头：只有选中相应报警探头后才能报警，未选中的探头将不报警。雏鸡阶段通常会集中在一个区域养殖，这时应选择该区域的探头，扩群后再勾选更多探头。</li>
+    <li>点温差报警：舍内各探头温度差异超过设定值以后才报警。如设定值为5°C,则任何二个探测点的温差超过5°C时才报警。</li>
+    <li>日龄温度：按不同阶段的起始日龄设定目标温度、低报温度和高报温度。入雏当日(零日龄)的温度等同1日龄，以后二个设定日龄之间的温度，会从高到低逐步均匀下降，这和鸡场控制器的设定原理是一样的。</li>
+    <li>最后，别忘了按右上方“保存”按钮，确保条件已被保存。</li>
+</ul>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+  <font style="">提醒：</font>
+  <li>报警设置的参数直接影响到是否准确报警，请仔细检查。</li>
+  <li>每次扩群后，别忘了勾选扩大后区域的探头，否则不会报警。</li>
+  <li>退出本软件后，报警功能将不再工作。这时，您可以使用我们的短信和手机语音提醒服务。</li>
+  <li>出栏后请关闭农汇通设备，并保护好探头(湿度探头进水或结露会导致损坏，应及时移走或盖上防水套)。</li>
+  <li>入雏前请开启农汇通设备，并检查温湿度探头是否放置到合适位置。</li>
+</ul>
+</p>
+ 
+<h5 class="p_simple" style="font-weight:bold;" >第三步：完成新建批次和入雏</h5>
+<p class="p_simple" style="text-indent:2em;">
+入雏前，场长需要在批次管理中完成“新建批次”操作。入雏当日，饲养员在生产日报中完成“入雏”操作。
+</p>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+  <font style="">提醒：</font>
+  <li>场长新建批次后，饲养员才能在生产日报中入雏。</li>
+  <li>入雏后，新建批次和入雏日期将无法修改。</li>
+  <li>入雏后，报警功能才会启动。</li>
+  <li>入雏后，生产数据才能输入。</li>
+</ul>
+</p>
+
+<h5 class="p_simple" style="font-weight:bold;">第四步 任务提醒</h5>
+<p class="p_simple" style="text-indent:2em;">
+任务提醒功能主要用来提醒饲养员每天需完成的工作，场长需要事先完成任务设定，在【任务提醒模块】点击右上角<img src="img/home_setting.png" style="width:25px;height:25px;"/>。软件自带了一个简单的任务提醒模板，场长只需在此基础上结合本场实际情况添加、删除和修改任务。
+</p>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+  <font style="">提醒：</font>
+  <li>任务设定是按类别操作的，请选择您需要设定的任务类别。</li>
+  <li>养殖过程中的任务设定，可以输入多日龄，中间以“，”(英文逗号)分开。</li>
+  <li>您可以选择“启用”或“暂不启用”调整每一批次的任务提醒。</li>
+</ul>
+</p>
+
+<h5 class="p_simple" style="font-weight:bold;">第五步：养殖过程中使用</h5>
+<p class="p_simple" style="text-indent:2em;">
+完成以上步骤后，您就可以全面使用本软件了。
+</p>
+<ul class="ul_simple" style="list-style-type:decimal;">
+<li>进入生产日报，花不到一分钟录入每天的生产数据。</li>
+<li>任务提醒会显示当天需要完成的工作以及尚未完成的工作。</li>
+<li>环控监测可随时查看栋舍的温湿度变化，一旦异常，您的手机会及时通知到您。</li>
+<li>数据分析可以向您展示栋舍内的温湿度变化状况，死淘率和采食量数据等。</li>
+</ul>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+  <font style="">提醒：</font>
+  <li>及时正确的输入每天数据，您就可以看到及时正确的数据分析。</li>
+  <li>数据漏输或输错，只要还未出栏，您可以随时修改和补充。</li>
+  <li>数据积累的越多，您看到的数据分析就会越全面。</li>
+</ul>
+</p>
+
+<h5 class="p_simple" style="font-weight:bold;">第六步：出栏和批次结算</h5>
+<p class="p_simple" style="text-indent:2em;">
+确定出栏时，请点击生产日报的“出栏”。当所有鸡舍都出栏，场长可以到批次管理中作“批次结算”。结算数据核对无误后，您可以点击“结算完成”，然后去查看盈利报告。
+</p>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+  <font style="">提醒：</font>
+  <li>出栏前，请核对生产日报的数据是否正确，出栏后将无法修改。</li>
+  <li>结算完成后将无法修改本批次的任何数据，请确定后再点击。</li>
+  <li>点击确认【结算完成】后，才能新建下一批次。</li>
+</ul>
+</p>
+<p class="p_simple" style="">
+当您顺利完成以上步骤，意味着您已经学会用“互联网”养鸡了！
+</p>
+
+
+<h5 class="p_simple" style="font-weight:bold;">关于版本升级</h5>
+<p class="p_simple" style="text-indent:2em;">
+登录成功后，点击【主页面】右上角<img src="img/home_help.png" style="width:25px;height:25px;"/>按钮，出现系统基本信息介绍。点击检查更新，可以升级软件。新版本会提供更完善功能，如您使用的不是最新版本，请直接点击更新，安装完后重新登录。版本更新后，您以前的数据将完整保留，请放心使用。同时别忘了提醒您的员工也及时更新，避免版本不一致带来的不便。
+</p>
+
+ 
+<h5 class="p_simple" style="font-weight:bold;">关于用户权限</h5>
+<p class="p_simple" style="text-indent:2em;">
+不同用户的使用权限会有所不同，目前软件中设置的用户权限分以下三种：
+</p>
+<p>
+<ul class="ul_simple" style="list-style-type:disc;">
+  <li>场长拥有最高权限，可以使用软件提供的注册、设置、输入和编辑等全部功能。</li>
+  <li>饲养员拥有具体栋舍中生产日报的数据录入和修改权限，其他数据可查看但不可修改。</li>
+  <li>农场主和其他员工拥有数据查看功能，没有修改功能。</li>
+</ul>
+</p>
+<br>
+<p class="p_simple" style="text-indent:2em;">
+软件中的更多功能，相信您通过学习会很快掌握。如在使用中遇到任何问题，或有任何好的建议，欢迎联系我们。
+</p>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,44 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="landingPage"></a>
+    <h1 class="title">
+      报警测试
+    </h1>
+</div>
+    <ion-content class="has-header">
+    	<!-- <button class="button" ng-click="add()">Add notification</button>
+        <button class="button" ng-click="update()">update notification</button>
+        <button class="button" ng-click="cancle()">cancle notification</button>
+        <br>
+        <button class="button" ng-click="playd()">Play Audio</button>
+        <button class="button" ng-click="stopd()">stop Audio</button>
+        <button class="button" ng-click="alarm(10)">10秒之后报警</button>
+        <br>
+        <button class="button" ng-click="deadline()">显示日期</button>
+        <br>
+        <button class="button" ng-click="detectNet()">检测网络类型</button>
+        <br>
+        <button class="button" ng-click="vibrate(10)">10秒后振动</button>
+        <button class="button" ng-click="vibrate2()">立即振动</button>
+        <br>
+        <button class="button" ng-click="alertClick()">alert点击</button>
+        <br>
+        <button class="button" ng-click="confirmClick()">confirm点击</button>
+        <br>
+        <button class="button" ng-click="promptClick()">prompt点击</button>
+        <br>
+        <button class="button" ng-click="startTask()">开始定时任务</button>
+        Time:{{times}};Result:{{results}}
+        <br>
+        <button class="button" ng-click="Wakelock()">acquire Wakelock</button>
+        <button class="button" ng-click="dim()">dim Wakelock</button>
+        <button class="button" ng-click="release()">release Wakelock</button>
+        <button class="button" ng-click="setReleaseOnPause()">setReleaseOnPause</button>
+        <br>
+        <button class="button" ng-click="openOldApp()">打开其他App</button>
+        <br> -->
+        <!-- <div ui-grid="gridOptions" style="position: relative;height:100%;width:100%;"></div> -->
+
+         <div id="main" style = "height:320px;width:480;"></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" style=" left:-6%; width:20%;  height: 100%;" ng-click="goDataAnalyseTable()">
+</a>
+    <h1 id="cullSurTi" class="title">
+      料蛋比曲线
+    </h1>
+	<select style="position: absolute;  
+               top:0.5rem;  
+               right:1rem; 
+               height:2rem; 
+               width:5rem; 
+               background:transparent url(img/icon/clear_image.png) no-repeat;
+               border:solid 0px #FFF;
+               color: #FFF;
+			   font-size:12pt;" ng-change = "changesCompareType()" ng-model="cullDeathRateData.ViewType"> <option value="{{key}}" ng-repeat="(key,val) in myConfig.ViewType" ng-selected="key==cullDeathRateData.ViewType">{{val}}</option> 
+                        </select>
+</div>
+    <ion-content class="has-header">
+      <div id="cullDeath_DIV">
+          <div id="main" style = "height:100%;"></div>
+		  <!--
+             <div style="height: 2.5rem;">
+                   <div style="float:left; width:40%;margin: 0px 0px 0px 33px; width:40%;  height: 2.5rem;overflow:hidden; ">
+                        <p  style="position: relative; top:5px;left:5%;">
+                          查看方式:
+                        </p>
+                        <select class="select-style" ng-change = "changesCompareType()" ng-model="cullDeathRateData.ViewType"> <option value="{{key}}" ng-repeat="(key,val) in myConfig.ViewType" ng-selected="key==cullDeathRateData.ViewType">{{val}}</option> 
+                        </select>
+                   </div>
+              </div>
+-->
+      </div>
+    </ion-content>
+</ion-view>

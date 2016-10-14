@@ -1,0 +1,15 @@
+
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" style=" left:-6%; width:20%;  height: 100%;" ng-click="goDataAnalyseTable()"></a>
+    <h1 id="cullSurTi" class="title">
+     采食曲线
+    </h1>
+  <button id="chang" class="button" ng-click="changes()">饮水</button>
+</div>
+    <ion-content class="has-header">
+      <div id="cullDeath_DIV">
+          <div id="main" style = "height:100%;"></div>
+      </div>
+    </ion-content>
+</ion-view>

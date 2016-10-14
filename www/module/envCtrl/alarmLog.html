@@ -1,0 +1,238 @@
+﻿<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="alarmStatistics"></a>
+    <h1 class="title">
+      报警日志
+    </h1>
+<a class="button icon button-clear"  ng-click="toggleRight()">筛选</a>
+</div>
+    <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden">
+    
+    <div  style="width             :  100%     ;
+                 height            :  40rem    ;
+                 background-color  :  #fff     ;
+                 position          :  relative ;
+                 top               :  -1rem    ;
+                 left              :  0rem     ;">
+    </div>
+
+      <ion-side-menus>
+          <!-- 中间内容 -->
+          <ion-side-menu-content>
+
+            <div style="width             :  100%     ;
+                        height            :  2rem     ;
+                        background-color  :  #a5d5a9  ;
+                        position          :  relative ;
+                        top               :  1.7rem   ;
+                        left              :  0rem     ;">
+
+                      <div style="height    :  2rem      ; 
+                                  width     :  5rem      ;
+                                  float     :  right     ;
+                                  position  :  relative  ;
+                                  top       :  0rem      ;
+                                  left      :  -1rem     ;">
+                          <p style="text-align  :  right      ; 
+                                    font-size   :  1.4rem     ;
+                                    position    :  relative   ;
+                                    top         :  0.5rem     ;
+                                    left        :  0rem       ;
+                                    color       :  #5c5c5c    ;">
+                                      {{buildingDayAge}}
+                                      <span style="font-size:0.7rem">
+                                        日龄
+                                      </span>
+                          </p>
+                      </div>
+                      <div class="row" style="width     :  30%       ;  
+                                              height    :  120%      ;
+                                              position  :  relative  ;
+                                              top       :  -10%      ;
+                                              left      :  -2%       ;">
+                            <div class="col">
+                              <img src="img/icon/farmimg.png" style="height    :  18px    ; 
+                                                                    width     :  18px   ;
+                                                                    position  :  relative  ;
+                                                                    top       :  0rem   ;
+                                                                    left      :  5%        ;" />
+                            </div>
+                            <div style="width     :  7rem      ;  
+                                        height    :  1.5rem    ;
+                                        color     :  #5c5c5c   ;
+                                        position  :  relative  ;
+                                        top       :  0.3rem    ;
+                                        left      :  1.2rem    ;
+                                        font-size :  1.4rem    ;">
+                              {{houseName}}
+                            </div>
+                      </div>
+              </div>
+
+                      <!-- <table class="tableLine middle"   style="position: relative; 
+                                                               top:2.5rem; 
+                                                               left:0rem;
+                                                               width:100%;
+                                                               height:1rem;
+                                                               font-size:0.8rem;">
+                            <tr>
+                              <td class="tableTitleRow titleFontColor" style="width:4rem;">日龄</td>
+                              <td class="tableTitleRow titleFontColor" style="width:4rem;">时间</td>
+                              <td class="tableTitleRow titleFontColor" style="width:6rem;">类型</td>
+                              <td class="tableTitleRow titleFontColor" style="width:4rem;">目标</td>
+                              <td class="tableTitleRow titleFontColor" style="width:4rem;">实际</td>
+                            </tr>
+                      </table>
+            <div id="tableDiv" style="position: relative; 
+                                      top:3rem; 
+                                      left:0rem;
+                                      width:100%;
+                                      background: red;
+                                      border-radius:5px;border:1px solidred;padding:0px;
+                                      min-height:350px;overflow-y:auto;max-height:300px;">
+                <table class="tableLine middle"   style="position: relative; 
+                                                         top:0rem; 
+                                                         left:0rem;
+                                                         width:100%;
+                                                         height:1rem;
+                                                         font-size:0.8rem;">
+                        <tr ng-repeat  =  "item in alarmLogData.AlarmLog">
+                          <td class="tableContentRow titleFontColor" style="width:18%;">{{item.aDayAge}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:18.5%;">{{item.aTime}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:27%;">{{item.alarmName}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:18.5%;">{{item.targetValue}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:20%;">{{item.realValue}}</td>
+                        </tr>
+                  </table>
+            </div> -->
+
+
+            <table class="tableLine middle"   style="position: relative; 
+                                                               top:2.5rem; 
+                                                               left:0rem;
+                                                               width:100%;
+                                                               height:1rem;
+                                                               font-size:0.8rem;">
+                            <tr>
+                              <td class="tableTitleRow titleFontColor" style="width:4%;">日龄</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">报警时间</td>
+                              <td class="tableTitleRow titleFontColor" style="width:11%;">报警类型</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">实际/目标</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">响应状态</td>
+                              <td class="tableTitleRow titleFontColor" style="width:9%;">响应人员</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">响应时间</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">是否消除</td>
+                              <td class="tableTitleRow titleFontColor" style="width:10%;">持续时间(分)</td>
+                            </tr>
+                      </table>
+            <div id="tableDiv" style="position: relative; 
+                                      top:3rem; 
+                                      left:0rem;
+                                      width:100%;
+                                      background: #FFF;
+                                      border-radius:5px;border:1px solid #EEE;padding:0px;
+                                      min-height:170px;overflow-y:auto;max-height:120px;">
+                <table class="tableLine middle"   style="position: relative; 
+                                                         top:0rem; 
+                                                         left:0rem;
+                                                         width:100%;
+                                                         height:1rem;
+                                                         font-size:0.8rem;">
+                        <tr ng-repeat  =  "item in alarmLogData.AlarmLog">
+                          <td class="tableContentRow titleFontColor" style="width:4%;">{{item.aDayAge}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.aTime}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:11%;">{{item.alarmName}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.values}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.process_status}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:9%;">{{item.deal_person}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.deal_time}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.is_normal}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:10%;">{{item.last_time}}</td>
+                        </tr>
+                  </table>
+            </div>
+
+            <!-- 日龄、报警时间、报警类型、响应状态、响应人员、响应时间、是否消除、持续时间 -->
+
+          </ion-side-menu-content>
+          <!-- 右侧菜单 -->
+          <ion-side-menu side="right" width="270" style="background-color: rgba(239, 239, 244, 1);">
+              <!-- <ion-radio ng-repeat="(key,val) in myConfig.alarmLogType"
+                         ng-value="'{{key}}'"
+                         ng-model="alarmLogData.AlarmCategory">
+                {{ val }}
+              </ion-radio> -->
+          <label class="item item-input item-select"> 
+            <span class="input-label fontColor">报警类型 </span>
+              <i class="icon ion-ios-arrow-forward"></i> 
+                <select ng-model="alarmLogData.AlarmCategory"> 
+                    <option value="{{key}}" 
+                            ng-repeat="(key,val) in myConfig.alarmLogType" 
+                            ng-selected="key==alarmLogData.AlarmCategory">
+                        {{val}}
+                    </option>
+
+                </select> 
+          </label>
+
+          <label class="item item-input item-select"> 
+            <span class="input-label fontColor">起始周龄</span>
+              <i class="icon ion-ios-arrow-forward"></i> 
+                <select ng-model="alarmLogData.AgeBegin"> 
+                    <option value        =  "{{key}}" 
+                            ng-repeat    =  "(key,val) in myConfig.logStart" 
+                            ng-selected  =  "key==alarmLogData.AgeBegin">
+                            {{val}}
+                    </option> 
+                </select> 
+          </label>
+
+          <label class="item item-input item-select"> 
+            <span class="input-label fontColor">结束周龄</span>
+              <i class="icon ion-ios-arrow-forward"></i> 
+                <select ng-model="alarmLogData.AgeEnd"> 
+                    <option value        =  "{{key}}" 
+                            ng-repeat    =  "(key,val) in myConfig.logEnd" 
+                            ng-selected  =  "key==alarmLogData.AgeEnd">
+                            {{val}}
+                    </option> 
+                </select> 
+          </label>
+
+
+
+
+
+
+              <br />
+              <a class           =  "button button-small button-light" 
+                 ng-click        =  "queryLog()" 
+                 nav-transition  =  "android"
+                 style           =  "width     :  80px      ;
+                                     height    :  10px      ;
+                                     position  :  relative  ; 
+                                     top       :  0rem      ; 
+                                     left      :  11rem     ;" >
+                  确定
+              </a> 
+              <br />
+              <a class           =  "button button-small button-light" 
+                 ng-click        =  "cancel()" 
+                 nav-transition  =  "android"
+                 style           =  "width     :  80px      ;
+                                     height    :  10px      ;
+                                     position  :  relative  ; 
+                                     top       :  -2rem      ; 
+                                     left      :  2rem      ;">
+                  取消
+              </a> 
+               
+
+
+          </ion-side-menu>
+      </ion-side-menus>
+
+
+
+    </ion-content>
+</ion-view>

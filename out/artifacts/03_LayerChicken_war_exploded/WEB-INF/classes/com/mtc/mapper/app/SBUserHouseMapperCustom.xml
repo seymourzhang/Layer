@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtc.mapper.app.SBUserHouseMapperCustom" >
+  <resultMap id="BaseResultMap" type="com.mtc.entity.app.SBUserHouse" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_code" property="userCode" jdbcType="VARCHAR" />
+    <result column="farm_id" property="farmId" jdbcType="INTEGER" />
+    <result column="house_id" property="houseId" jdbcType="INTEGER" />
+    <result column="create_person" property="createPerson" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_person" property="modifyPerson" jdbcType="INTEGER" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insertBatch" parameterType="com.mtc.entity.app.SBUserHouse" >
+    insert into s_b_user_house (id, user_id, user_code, 
+      farm_id, house_id, create_person, 
+      create_date, create_time, modify_person, 
+      modify_date, modify_time)
+    values 
+    <foreach collection="list" item="item" index="index"
+  		separator=",">
+    (#{item.id,jdbcType=INTEGER}, #{item.userId,jdbcType=INTEGER}, #{item.userCode,jdbcType=VARCHAR}, 
+      #{item.farmId,jdbcType=INTEGER}, #{item.houseId,jdbcType=INTEGER}, #{item.createPerson,jdbcType=INTEGER}, 
+      #{item.createDate,jdbcType=TIMESTAMP}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyPerson,jdbcType=INTEGER}, 
+      #{item.modifyDate,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP})
+      </foreach>
+  </insert>
+  <delete id="deleteByUserId" parameterType="java.lang.Integer" >
+    delete from s_b_user_house
+    where user_id = #{id,jdbcType=INTEGER}
+  </delete>
+  <select id="selectByUserId" resultMap="BaseResultMap" >
+    select id, user_id, user_code, farm_id, house_id, create_person, create_date, create_time, 
+    modify_person, modify_date, modify_time
+    from s_b_user_house where  user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserIdHouseId" resultMap="BaseResultMap" >
+    select id, user_id, user_code, farm_id, house_id, create_person, create_date, create_time, 
+    modify_person, modify_date, modify_time
+    from s_b_user_house where 
+     user_id = #{userId,jdbcType=INTEGER}
+    and house_id = #{houseId,jdbcType=INTEGER}
+  </select>
+</mapper>

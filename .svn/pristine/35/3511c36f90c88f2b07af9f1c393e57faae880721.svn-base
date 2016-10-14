@@ -1,0 +1,32 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      生产报表
+    </h1>
+</div>
+    <ion-content class="has-header">
+    	<ion-list>
+            <ion-item class="item-icon-right" ng-click="goDailyReport()">
+                  生产记录
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" ng-click="goProductionDaily()">
+                  生产日报
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" ng-click="goWeekly()">
+                  生产周报
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+	        <!-- <ion-item class="item-icon-right">
+	              出栏
+	           <i class="icon ion-chevron-right icon-accessory"></i>
+	        </ion-item> -->
+        </ion-list>
+
+    </ion-content>
+</ion-view>

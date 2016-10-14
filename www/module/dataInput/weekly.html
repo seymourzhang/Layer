@@ -1,0 +1,107 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="goDailyTable()"></a>
+  <h1 class="title">
+    生产周报
+  </h1>
+<a class="button" ng-click="switchUnit()">{{weeklyData.unit}}</a>
+</div>
+  <ion-content  class="has-header" overflow-scroll="true" style="overflow: hidden;">
+    <!-- <label class="item item-input item-select" style="border:solid 0px #fff;  position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+        <span class="input-label" style="color: rgba(47, 127, 255, 1)">栋舍号</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model="weeklyData.selectHouse"
+                    ng-change="judgeHouse()"> 
+                <option value        =  "{{item}}" 
+                        ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                        ng-selected  =  "item.HouseId == weeklyData.selectHouseId">
+                        {{item.HouseName}}栋
+                </option> 
+            </select> 
+    </label> -->
+    <!-- <div style="width: 100%; height: 8%;">
+      <span>&ensp;&ensp;累计死淘：{{weeklyData.culling_acc}}只（{{weeklyData.acc_cd_rate}}）</span> 
+      <span>&ensp;&ensp;&ensp;累计产蛋：{{weeklyData.acc_layNum}}枚（{{weeklyData.acc_layWeight}}公斤）</span> 
+      <span></span>
+    </div> -->
+
+
+    <div style="position: relative;  
+                top:0rem;  
+                left:0rem; 
+                height:8%; 
+                width:70%;">
+      <div style="position: relative;  
+                  top:0rem;  
+                  left:0rem; 
+                  height:100%; 
+                  width:100%;">
+        <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;text-align: center">今天：{{weeklyData.DataInfos}}</span>
+        <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;text-align: center">生长{{weeklyData.CurGrowthWeekAge}}周</span>
+        <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;text-align: center">产蛋{{weeklyData.CurLayerWeekAge}}周</span>
+      </div>
+     <!-- <div style="position: relative;
+                  top:0rem;  
+                  left:0rem; 
+                  height:50%; 
+                  width:100%;">
+        <span style="position: relative;top:0rem;left:1rem; font-size:12px;">入舍日：{{weeklyData.PlaceDate}}</span>
+        <span style="position: relative;top:0rem;left:1rem; font-size:12px;">入舍数：{{weeklyData.PlaceNum}}只</span>
+        <span style="position: relative;top:0rem;left:1rem; font-size:12px;">产蛋周初始存栏{{weeklyData.AmountFirstLayer}}只</span>
+      </div>-->
+    </div>
+    <div style="position: absolute;  
+                top:0rem;  
+                right:0rem; 
+                height:8%; 
+                width:30%;">
+        <div style="height:100%;width:50%;">
+          <span style="position: relative;top:0rem;left:2.5rem;font-weight: bold;text-align: center">显示：</span>
+        </div>
+        <div style="position: absolute;top:0rem;right:0rem;height:80%;width:50%;">
+           <select style="position: absolute;  
+                         top:0rem;  
+                         right:0rem; 
+                         height:100%; 
+                         width:100%;
+                         background:transparent url(img/icon/clear_image.png) no-repeat;
+                         border:solid 0px #FFF;"
+                  ng-model="weeklyData.selectHouse"
+                  ng-change="judgeHouse()"> 
+              <option value        =  "{{item}}" 
+                      ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                      ng-selected  =  "item.HouseId == weeklyData.selectHouseId">
+                      {{item.HouseName}}栋
+              </option> 
+          </select> 
+          <!-- <i class="icon ion-android-arrow-dropdown" style="position:absolute; top:0.7rem;right:0.5rem;"></i> --> 
+        </div>
+    </div>
+
+    <div style="position: relative;  
+                top:0rem;  
+                right:0rem; 
+                height:90%; 
+                width:100%;">
+      <!-- <div ng-hide="weeklyDiv" style="width:100%;height:90%;">
+        <div ui-grid="gridWeekly" style="width:100%;height:90%;"ui-grid-pinning></div>
+      </div>
+      <div ng-hide="totalDiv" style="width:100%;height:90%;">
+        <div ui-grid="gridTotal" style="width:100%;height:90%;"ui-grid-pinning></div>
+      </div> -->
+        <div ng-hide="weeklyDiv" style="width:100%;height:100%;">
+          <div ui-grid="gridWeekly" style="width:100%;height:100%;"ui-grid-pinning></div>
+        </div>
+        <div ng-hide="totalDiv" style="width:100%;height:100%;">
+          <div ui-grid="gridTotal" style="width:100%;height:100%;"ui-grid-pinning></div>
+        </div>
+    </div>
+
+
+    
+    
+
+    
+
+  </ion-content>
+</ion-view>

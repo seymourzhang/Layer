@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mtc.mapper.app.SBFarmSettleMapperCustom">
+  <resultMap id="BaseResultMap" type="com.mtc.entity.app.SBFarmSettle">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="farm_breed_id" jdbcType="INTEGER" property="farmBreedId" />
+    <result column="house_id" jdbcType="INTEGER" property="houseId" />
+    <result column="house_breed_id" jdbcType="INTEGER" property="houseBreedId" />
+    <result column="fee_type" jdbcType="VARCHAR" property="feeType" />
+    <result column="fee_code" jdbcType="VARCHAR" property="feeCode" />
+    <result column="fee_name" jdbcType="VARCHAR" property="feeName" />
+    <result column="company_code" jdbcType="VARCHAR" property="companyCode" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="price_pu" jdbcType="DECIMAL" property="pricePu" />
+    <result column="quentity" jdbcType="INTEGER" property="quentity" />
+    <result column="weight" jdbcType="DECIMAL" property="weight" />
+    <result column="money_sum" jdbcType="DECIMAL" property="moneySum" />
+    <result column="bak1" jdbcType="VARCHAR" property="bak1" />
+    <result column="bak2" jdbcType="VARCHAR" property="bak2" />
+    <result column="bak3" jdbcType="VARCHAR" property="bak3" />
+    <result column="bak4" jdbcType="DECIMAL" property="bak4" />
+    <result column="bak5" jdbcType="DECIMAL" property="bak5" />
+    <result column="bak6" jdbcType="DECIMAL" property="bak6" />
+    <result column="create_person" jdbcType="INTEGER" property="createPerson" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_person" jdbcType="INTEGER" property="modifyPerson" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <select id="selectFarmSettle" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, farm_id, farm_breed_id, house_id, house_breed_id, fee_type, fee_code, 
+    fee_name, company_code, company_name, price_pu, quentity, weight, money_sum, bak1, 
+    bak2, bak3, bak4, bak5, bak6, create_person, create_date, create_time, modify_person, 
+    modify_date, modify_time
+    from s_b_farm_settle where farm_breed_id =#{item.id}
+  </select>
+  
+  <insert id="Listinsert" parameterType="com.mtc.entity.app.SBFarmSettle" >
+			 insert into s_b_farm_settle (
+			 farm_id, farm_breed_id, house_id, 
+			 house_breed_id, fee_type, fee_code, 
+			 fee_name, company_code, company_name, 
+			 price_pu, quentity, weight, 
+			 money_sum, bak1, bak2, 
+			 bak3, bak4, bak5, bak6, 
+			 create_person, create_date, create_time, 
+			 modify_person, modify_date, modify_time
+			) values
+		   <foreach collection="list" item="item" index="index"  
+		       separator=",">  
+	  (#{item.farmId,jdbcType=INTEGER},#{item.farmBreedId,jdbcType=INTEGER},#{item.houseId,jdbcType=INTEGER}, 
+     #{item.houseBreedId,jdbcType=INTEGER},#{item.feeType,jdbcType=VARCHAR},#{item.feeCode,jdbcType=VARCHAR}, 
+     #{item.feeName,jdbcType=VARCHAR},#{item.companyCode,jdbcType=VARCHAR},#{item.companyName,jdbcType=VARCHAR}, 
+     #{item.pricePu,jdbcType=DECIMAL},#{item.quentity,jdbcType=INTEGER},#{item.weight,jdbcType=DECIMAL}, 
+     #{item.moneySum,jdbcType=DECIMAL},#{item.bak1,jdbcType=VARCHAR},#{item.bak2,jdbcType=VARCHAR}, 
+     #{item.bak3,jdbcType=VARCHAR},#{item.bak4,jdbcType=DECIMAL},#{item.bak5,jdbcType=DECIMAL},#{item.bak6,jdbcType=DECIMAL}, 
+     #{item.createPerson,jdbcType=INTEGER},#{item.createDate,jdbcType=TIMESTAMP},#{item.createTime,jdbcType=TIMESTAMP}, 
+     #{item.modifyPerson,jdbcType=INTEGER},#{item.modifyDate,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}
+      )
+            </foreach>
+  </insert>
+</mapper>

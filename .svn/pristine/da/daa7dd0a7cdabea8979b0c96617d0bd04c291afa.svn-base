@@ -1,0 +1,67 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="batchManage"></a>
+  <h1 class="title">
+    历史数据导入
+  </h1>
+
+</div>
+  <ion-content  class="has-header">
+    
+
+    <label class="item item-input item-select"> 
+        <span class="input-label fontColor">批次</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select disabled style="color:#989898" > 
+                <option >{{historySelectData.farmBreedBatchCode}}</option> 
+            </select>
+     </label>
+
+
+    <label class="item item-input item-select"> 
+        <span class="input-label fontColor">栋舍号</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "historySelectData.selectHouse"
+                    ng-change="judgeHouse()"> 
+                <option value        =  "{{item}}" 
+                          ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                          ng-selected  =  "item.HouseId == historySelectData.houseId">
+                          {{item.HouseName}}栋
+                  </option> 
+            </select>
+     </label>
+
+
+    <!-- <label class="item item-input" style="border:solid 0px #fff; border-bottom:solid 1px #878787;  position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+        <span class="input-label" style="color: rgba(47, 127, 255, 1)">批次号</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="text" ng-model="historySelectData.farmBreedBatchCode" style="background-color: #fff; font-size:0.85rem; position : relative; right:40; text-align:right" disabled/>
+    </label> -->
+    <!-- <label class="item item-input item-select" style="border:solid 0px #fff; border-bottom:solid 1px #878787;  position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+        <span class="input-label" style="color: rgba(47, 127, 255, 1)">栋舍号</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="text" style="background-color: #fff; font-size:0.85rem; position : relative; right:20; text-align:right" disabled>
+              <select ng-model="historySelectData.selectHouse"
+                      ng-change="judgeHouse()"> 
+                  <option value        =  "{{item}}" 
+                          ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                          ng-selected  =  "item.houseId == historySelectData.selectHouse">
+                          {{item.HouseName}}栋
+                  </option> 
+              </select>
+            </input>   
+    </label> -->
+    <div id="inputDivId" style="width:100%;height:45px; border:solid 0.0px #FFF;">
+      <div ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav ui-grid-pinning style="width:100%;height:100%;"></div>
+    </div>
+    
+
+    <br />
+    <br />
+    <br />
+    <div class="middle">
+      <a class="button  button-small button-balanced" ng-click="save()" style="width:80px;height:3px;position:relative;top:0rem;left:0rem;">保   存</a>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,89 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ng-hide="backBtn" href="#/module/task/taskTable/{{TaskType}}"></a>
+	<a class="button button-clear" ng-hide="cancelBtn" ng-click="cancelEvent()">取消</a>
+    <h1 class="title">
+      查看任务
+    </h1>
+    <a class="button button-clear" ng-hide="visible" ng-click="startEdit()">编辑</a>
+</div>
+	<ion-slide-box class="has-header fullScreen">
+		    <div class="fullScreen" style="background:#E3E3E3;">
+		    	<div class="list">
+
+		    		<label class="item item-input"> 
+		    			<span class="input-label fontColor">任务类型</span> 
+		    			<i class="icon ion-ios-arrow-forward"></i> 
+		    			<p>{{updateTaskData.showTaskType}}</p>
+		    		</label>
+		    		 
+				    <label class="item item-input"> 
+				        <span class="input-label fontColor">任务项</span> 
+				          <i class="icon ion-ios-arrow-forward"></i> 
+				            <input type       =  "text"
+				            	   ng-model="updateTaskData.TaskName"
+				                   maxlength  =  "10" 
+				                   placeholder=  "请输入任务内容" />
+				    </label>
+				    <label ng-hide="multiSelectAgeInfos" class="item item-input"> 
+				        <span class="input-label fontColor">日龄设定</span> 
+				          <i class="icon ion-ios-arrow-forward"></i> 
+				            <input type       =  "text" 
+				                   placeholder="请输入日龄，格式请参照备注。"
+				                   ng-model   ="updateTaskData.AgeInfos" />
+				    </label>
+
+				    <label ng-hide="radioAgeInfos" class="item item-input item-select"> 
+				        <span class="input-label fontColor">日龄设定</span> 
+				          <i class="icon ion-ios-arrow-forward"></i>
+					          <select ng-model   =  "updateTaskData.AgeInfos">
+					              <option value        =  "{{key}}" 
+					                      ng-repeat    =  "(key,val) in myConfig.taskDate" 
+					                      ng-selected  =  "key==updateTaskData.AgeInfos">
+					                      {{val}}
+					              </option>
+					          </select> 
+				    </label>
+
+
+
+				    <label class="item item-input item-select"> 
+				      <span class="input-label fontColor">任务状态</span>
+				        <i class="icon ion-ios-arrow-forward"></i> 
+				          <select ng-model   =  "updateTaskData.TaskStatus" 
+				                  ng-change  =  "judgeRaise()">
+				              <option value        =  "{{key}}" 
+				                      ng-repeat    =  "(key,val) in myConfig.taskStatus" 
+				                      ng-selected  =  "key==updateTaskData.TaskStatus">
+				                      {{val}}
+				              </option>
+				          </select> 
+				    </label>
+			    </div>
+
+
+			    <p ng-hide="multiSelectAgeInfos" style="padding-left:1rem;margin-top:-15px;font-size:13px;color:#989898;">
+			      日龄设定：多日龄之间用#隔开(如：1#4#5)，每天必做任务直接输入**。
+			    </p>
+			    <br>
+			    <div class="middle"> 
+			        <a class           =  "button  button-balanced saveBtn"
+			           ng-hide         =  "saveBtn"
+			           ng-click        =  "save()"
+			           nav-transition  =  "android">
+			           保   存
+			        </a> 
+			    </div><!-- background-image:url('img/icon/clear_image.png'); -->
+			    <div style="  background-image:url('img/icon/clear_image.png');
+			                  position:absolute;
+			                  margin-left:0%;
+			                  margin-top:-420px;
+			                  width:100%;
+			                  height:350px;
+			                  z-index:2;"
+			           ng-hide="sheerDiv"
+			           ng-click="alert()">
+			      </div>
+		    </div>
+	</ion-slide-box>
+</ion-view>

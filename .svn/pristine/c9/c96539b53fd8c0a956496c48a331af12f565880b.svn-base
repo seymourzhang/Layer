@@ -1,0 +1,286 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="batchManage"></a>
+	<h1 class="title">
+	  月度成本核算
+	</h1>
+  <a class="button" ng-click = "save()">保存</a>
+</div>
+<ion-content class="has-header">
+  <label class="item item-input" ng-click = "goYoungChickenWorth()"> 
+    <span class="input-label fontColor">青年鸡身价摊销</span> 
+      <i class="icon ion-ios-arrow-forward"></i>
+      <a  class           =  "button button-small button-balanced" 
+          ng-click        =  "testFun()" 
+          nav-transition  =  "android"
+          style           =  "width     :  100px      ;
+                              height    :  2rem       ;
+                              position  :  relative   ; 
+                              top       :  0rem       ; 
+                              left      :  100px      ;
+                              border    :  solid 0px #fff  ;" >
+          点击录入
+      </a> 
+  </label>
+
+
+    
+
+
+
+	<label class="item item-input item-select" style=" position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+        <span class="input-label" style="color: rgba(47, 127, 255, 1)">核算月份</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model="monthCostData.chooseMonth"
+                    ng-change="judgeMonth()"> 
+                <option value="{{item.key}}"
+                        ng-repeat="item in monthCostData.Monthlist" 
+                        ng-selected="item.key==monthCostData.chooseMonth">
+                  {{item.key}}
+                </option> 
+            </select> 
+  </label>
+	<div class="item item-divider">
+      本月收入
+  </div>
+   <!-- ng-model="batchData.place_day_age" placeholder="请输入" ng-change="getthedate(batchData.place_date,batchData.place_day_age)"  -->
+
+    <label class="item item-input"> 
+      <span class="input-label fontColor">合格蛋销售</span> 
+        <i class="icon ion-ios-arrow-forward"></i>
+          <input type="text" placeholder="自动计算" ng-model="monthCostData.OutputMsg.GoodSales" readonly="readonly" style="background:#FFF; color:#989898;" />
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+    </label>
+
+    <label class="item item-input"> 
+      <span class="input-label fontColor">破损蛋销售</span> 
+        <i class="icon ion-ios-arrow-forward"></i>
+          <input type="text" placeholder="自动计算" ng-model="monthCostData.OutputMsg.BrokenSales" readonly="readonly" style="background:#FFF; color:#989898;" />
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+    </label>
+
+  <label class="item item-input"> 
+      <span class="input-label fontColor">淘汰鸡销售</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" placeholder="请输入" ng-model="monthCostData.OutputMsg.CDChickenSales" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+
+  <label class="item item-input"> 
+      <span class="input-label fontColor">鸡粪收入</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" placeholder="请输入" ng-model="monthCostData.OutputMsg.ChickenManure" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/>
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">其他收入</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" placeholder="请输入" ng-model="monthCostData.OutputMsg.OtherSales" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/>
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+    
+  <div class="item item-divider">
+    本月饲料成本
+  </div>
+
+  <label class="item item-input item-select" style="border:solid 0.5px #CFCFCF;  position: relative;  top:0rem;  left:0rem; height:3rem; width:101%; "> 
+        <span class="input-label" style="color: rgba(47, 127, 255, 1)">饲料种类数</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model="monthCostData.chooseFeedNumber"
+                    ng-change="judgeFeedNumber()"> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.feedNumber" 
+                        ng-selected  =  "key==monthCostData.chooseFeedNumber">
+                        {{val}}
+                </option> 
+            </select> 
+  </label>
+
+  <!-- <div id="theMonthId">
+      <div ui-grid="gridOptions" ui-grid-edit ui-grid-cellnav class="theMonthDiv"></div>
+  </div> -->
+
+
+  <div>
+      <table class="" border="0" style="width:100%; 
+                                        height:1px;
+                                        font-size: 0.7rem;
+                                        position:relative; 
+                                        top:0rem; 
+                                        left:0rem;
+                                        border:solid 2px #9B9B9B;
+                                        table-layout:fixed;word-break:break-;">
+        <tr>
+          <td class="middle" style="width:4.3%;vertical-align:middle;border:solid 1px #9B9B9B; background:#E3E3E3;"><span style="font-size:0.85rem;">饲料种类</span></td>
+          <td class="middle" style="width:6.0%;vertical-align:middle;border:solid 1px #9B9B9B; background:#E3E3E3;"><span style="font-size:0.85rem;">公斤数</span></td>
+          <td class="middle" style="width:4.0%;vertical-align:middle;border:solid 1px #9B9B9B; background:#E3E3E3;"><span style="font-size:0.85rem;">单价</span></td>
+          <td class="middle" style="width:6.0%;vertical-align:middle;border:solid 1px #9B9B9B; background:#E3E3E3;"><span style="font-size:0.85rem;">金额</span></td>
+        </tr>
+
+                                                                                  <!--  border:solid 1px red;  -->
+        <tr ng-repeat="item in monthCostData.FeedMsg.FeedInfo">
+          <td style="border:solid 1px #9B9B9B;">
+            <select ng-model="item.FeedCode" ng-change="judgeFeedType(item)" style="width:100%;height:100%;text-align:center;"> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in myConfig.foodType" 
+                        ng-selected  =  "key==item.FeedCode">
+                        {{val}}
+                </option> 
+            </select>
+          </td>
+          <td style="border:solid 1px #9B9B9B;">
+            <input style="background:#FFF; 
+                                      position: relative; 
+                                      top:0rem; 
+                                      left:0rem;
+                                      text-align:center;
+                                      margin:0 auto;
+                                      font-size:0.85rem;
+                                      width:100%; 
+                                      height:1.5rem;"
+                               type="number"
+                               ng-model="item.Weight"
+                               ng-change="forageTotal()"
+                               onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+          </td>
+          <td style="border:solid 1px #9B9B9B;">
+            <input style="background:#FFF; 
+                                      position: relative; 
+                                      top:0rem; 
+                                      left:0rem;
+                                      text-align:center;
+                                      margin:0 auto;
+                                      font-size:0.85rem;
+                                      width:100%; 
+                                      height:1.5rem;" 
+                               type="number"
+                               ng-model="item.Price_p"
+                               ng-change="forageTotal()"
+                               onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+          </td>
+          <td style="border:solid 1px #9B9B9B;">
+            <input type="text" readonly="readonly" style="background:#FFF; 
+                                                          position: relative; 
+                                                          top:0rem; 
+                                                          left:0rem;
+                                                          text-align:center;
+                                                          margin:0 auto;
+                                                          font-size:0.85rem;
+                                                          width:100%; 
+                                                          height:1.5rem;
+                                                          color:#989898"
+                              type="number"
+                              ng-model="item.Price_sum"
+                              ng-change="forageTotal()"/>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="border:solid 1px #9B9B9B;">
+            <input type="text" readonly="readonly" value="合计" style="background:#FFF; 
+                                                          position: relative; 
+                                                          top:0rem; 
+                                                          left:0rem;
+                                                          text-align:center;
+                                                          margin:0 auto;
+                                                          font-size:0.85rem;
+                                                          width:100%; 
+                                                          height:1.5rem;
+                                                          background:#E3E3E3;" />
+          </td>
+          <td style="border:solid 1px #9B9B9B;">
+            <input type="number" readonly="readonly" ng-model="monthCostData.FeedMsg.total_Weight" style="background:#FFF; 
+                                                                                    position: relative; 
+                                                                                    top:0rem; 
+                                                                                    left:0rem;
+                                                                                    text-align:center;
+                                                                                    margin:0 auto;
+                                                                                    font-size:0.85rem;
+                                                                                    width:100%; 
+                                                                                    height:1.5rem;
+                                                                                    color:#989898" />
+          </td>
+          <td style="border:solid 1px #9B9B9B;">
+            <input type="number" readonly="readonly" ng-model="monthCostData.FeedMsg.total_Price_p" style="background:#FFF; 
+                                                                                    position: relative; 
+                                                                                    top:0rem; 
+                                                                                    left:0rem;
+                                                                                    text-align:center;
+                                                                                    margin:0 auto;
+                                                                                    font-size:0.85rem;
+                                                                                    width:100%; 
+                                                                                    height:1.5rem;
+                                                                                    color:#989898" />
+          </td>
+          <td style="border:solid 1px #9B9B9B;">
+            <input type="text" readonly="readonly" ng-model="monthCostData.FeedMsg.total_Price_sum" style="background:#FFF; 
+                                                                                    position: relative; 
+                                                                                    top:0rem; 
+                                                                                    left:0rem;
+                                                                                    text-align:center;
+                                                                                    margin:0 auto;
+                                                                                    font-size:0.85rem;
+                                                                                    width:100%; 
+                                                                                    height:1.5rem;
+                                                                                    color:#989898" />
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+
+  <div class="item item-divider">
+    本月其他生产成本
+  </div>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">包装费用</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.PackingFee" placeholder="请输入" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">药品疫苗费</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.VaccineFee" placeholder="请输入" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">人工费</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.ManualFee" placeholder="请输入" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">燃料费</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.FuelFee" placeholder="请输入" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">水电费</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.UtilityFee" placeholder="请输入" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">折旧租金</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.LossFee" placeholder="请输入" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+  <label class="item item-input"> 
+      <span class="input-label fontColor">其他费用</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="number" ng-model="monthCostData.OtherMsg.OtherFee" placeholder="请输入" style="background:#FFF;"/> 
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+  </label>
+
+  <br>
+
+  <div class="middle">
+    <a class="button  button-balanced saveBtn" ng-click="save()">保   存</a>
+  </div>
+
+</ion-content>
+</ion-view>

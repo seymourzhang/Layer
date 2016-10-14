@@ -1,0 +1,83 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" ng-click="goDataAnalyseTable()"></a>
+    <h1 class="title">
+      温度K线图
+    </h1>
+  <a class="button icon button-clear">查询</a>
+</div>
+    <ion-content class="has-header">
+      <!-- 横向报表 -->
+
+      <div id="tempChart_DIV">
+      
+                 <div id="main" style = "height:40%;"></div>
+
+
+
+
+
+
+
+                 <div style="position: relative;
+                             top:0rem;
+                             left:0rem;
+                             width:60%;
+                             height: 3rem;">
+                   <div style="position: relative;
+                               top:0rem;
+                               left:0rem;
+                               width:50%;
+                               height: 3rem;
+                               ">
+
+
+                      <p  style="position: relative;
+                                     top:1.2rem;
+                                     left:5%;">
+                        栋舍号:
+                      </p>
+
+                      <select class="select-style"   
+                              ng-model="tempKMapData.selectHouse">
+                          <option
+                              value        =  "{{item}}"
+                              ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                              ng-selected  =  "item==tempKMapData.selectHouse">
+                                 {{item.HouseName}}
+                          </option>
+                      </select>
+                     
+                   </div>
+                   <div style="position: relative;
+                               top:-3rem;
+                               left:50%;
+                               width:50%;
+                               height: 3rem;
+                               ">
+                          <p  style="position: relative;
+                                     top:1.2rem;
+                                     left:5%;">
+                            批次号:
+                          </p>
+                          <select class="select-style" ng-model="tempKMapData.selectedBatch">
+                              <option value        =  "{{key}}"
+                                      ng-repeat    =  "(key,val) in tempKMapData.farmBatch"
+                                      ng-selected  =  "key==tempKMapData.selectedBatch">
+                                  {{val}}
+                              </option>
+                          </select>
+
+
+                   </div>
+                 </div>
+
+
+                 
+
+
+
+        </div>
+
+    </ion-content>
+</ion-view>

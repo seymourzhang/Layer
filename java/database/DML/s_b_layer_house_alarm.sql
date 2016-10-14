@@ -1,0 +1,2 @@
+delete from s_b_layer_house_alarm where farm_id = 0 and house_id = 0;
+INSERT INTO s_b_layer_house_alarm (farm_id, house_id, alarm_delay, temp_cpsation, temp_cordon, alarm_way, target_temp, min_temp, max_temp, alarm_probe, point_alarm, create_person, create_date, create_time, modify_person, modify_date, modify_time) VALUES (0, 0, 0, '0', 2.00, '0', 28.00, 25.00, 33.00, '1', 5.00, 0, '2016-04-18 00:00:00', '2016-04-18 00:00:00', 0, '2016-04-18 18:08:32', '2016-04-19 17:54:29');

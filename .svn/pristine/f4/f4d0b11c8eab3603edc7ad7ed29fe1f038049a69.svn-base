@@ -1,0 +1,40 @@
+
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" ng-hide="backBtn" href="#/infoSafeguard"></a> 
+    <h1 class="title"> 员工列表 </h1> 
+    <a class="button icon ion-plus button-clear" nav-direction="forward" ng-click="goAddEmployees()"></a> 
+   </div> 
+   <ion-content class="has-header"> 
+    <br /> 
+    <br /> 
+    <p style="color:#808080; position:absolute; left:20px; font-size:26px;">员工信息 </p> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <ion-list>
+      <ion-item class="item-icon-right" ng-repeat="item in sparraw_user_temp.userinfos" type="item-text-wrap" href="#/employeesTable/employeesInfo/{{item.id}}">
+         {{item.name}}
+         <i class="icon ion-chevron-right icon-accessory"></i>
+<!--          <ion-option-button class="button-energized" ng-click="edit(item)">
+          edit
+         </ion-option-button> -->
+         <ion-option-button class="button-assertive" ng-click="remove(item)">
+         删除
+         </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <p style="color:#808080; position:relative; left:10px; top:1rem; font-size:16px;">提示：手指向左侧滑动可删除该行。</p>
+    <br /> 
+    <br /> 
+    <br /> 
+    <div class="middle">  
+     <!-- <a class="button  button-balanced"  style="width:240px; color:#FFFFFF;" ui-sref="landingPage" nav-transition="android">完 成</a> --> 
+          <a class="button  button-balanced item-icon-right saveBtn" ng-hide="finishBtn" ng-click="saveEmployees()" nav-transition="android">完 成</a>
+ 
+    </div>  
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+  </ion-view>

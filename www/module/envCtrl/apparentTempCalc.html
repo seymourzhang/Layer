@@ -1,0 +1,94 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+    <a class="button icon ion-chevron-left button-clear" ng-click="backFun()" ></a>
+    <!-- ui-sref="" -->
+    <h1 class="title">
+      体感温度计算器
+  </h1>
+ 
+</div>
+
+<ion-content class="has-header">
+	
+	
+    <div class="list"> 
+      
+	   
+	  
+	  <label class="item item-input"> 
+        <span class="input-label fontColor">环境温度</span> 
+            <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" type      =  "number" ng-model = "calcData.envTemp" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">°C</p>
+      </label>
+	  
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">相对湿度</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" type      =  "number" ng-model = "calcData.RH" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">%</p>
+			
+      </label>
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">风速</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "calcData.wind"/>
+            <p style="position: absolute; top:15px; right:1rem; width:40px; height:1.5rem;">米/秒</p>
+      </label>
+	  
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">体感温度</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input readonly="readonly" type      =  "number" ng-model = "calcData.apparentTemp"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">°C</p>
+      </label> 	
+	  
+	 <div style="position: relative; 
+		top:0.5rem; 
+		left:0.0rem;
+		width:106%;
+		height:30px;
+		background-color: #fff;">
+		<label style="position: relative; 
+		left:1rem;
+		width:50%;font-size:9pt;color:#CD4F39;">
+		环境温度范围：21.1-35(°C)
+		</label>
+	</div>
+	<div style="position: relative; 
+		top:0.5rem; 
+		left:0.0rem;
+		width:106%;
+		height:30px;
+		background-color: #fff;">
+		<label style="position: relative; 
+		left:1rem;
+		width:50%;font-size:9pt;color:#CD4F39;">
+		相对湿度范围：30-80(%)
+		</label>
+	</div>
+	<div style="position: relative; 
+		top:0.5rem; 
+		left:0.0rem;
+		width:106%;
+		height:30px;
+		background-color: #fff;">
+		<label style="position: relative; 
+		left:1rem;
+		width:50%;font-size:9pt;color:#CD4F39;">
+		风速范围：0-2.54(米/秒)
+		</label>
+	</div>
+     <br /> 
+     <div class="middle">
+		<a class="button  button-balanced saveBtn" ng-click="save()">计   算</a>
+	</div>
+
+
+    </div> 
+    <br /> 
+   </ion-content> 
+</ion-view>

@@ -1,0 +1,747 @@
+/* Empty. Add your own CSS if you like */
+
+
+
+#underlying_DIV {
+
+width:100%;
+height: 736px;
+
+}
+
+#landingPage_Underlying_DIV {
+    width:100%;
+    height: 736px;
+}
+
+
+#activation_Underlying_DIV {
+    width:100%;
+    height: 736px;
+}
+
+
+
+#login_Box {
+     margin:0 auto;  
+     height:37%; 
+     background-color: #b7e9c0;
+
+     /*圆角*/
+     font-family: Arial;
+     border-radius: 20px;
+     padding: 30px 30px;
+     width: 290px
+}
+
+.bold{
+    font-weight:bold;
+}
+
+
+/**
+    seymour's style;
+*/
+.cellEditStyle{
+    text-align: center;
+    border-left-style: 10px;
+}
+.headerEditStyle{
+    text-align: center;
+    font-size: '90%';
+}
+
+
+.rightArrow {
+	float:right;
+	color: #000000;
+}
+
+.saveBtn{
+    width:140px; 
+    color:#FFFFFF;
+}
+
+.linear{   
+/*    width:100%;   
+    height:600px;*/   
+    FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=##82d095,endColorStr=#fafafa); /*IE*/   
+    background:-moz-linear-gradient(top,#82d095,#fafafa);/*火狐*/   
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#82d095), to(#fafafa));/*谷歌*/   
+  
+      
+    background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #82d095),color-stop(1, #fafafa));/* Safari & Chrome*/  
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#82d095', endColorstr='#fafafa'); /*IE6 & IE7*/  
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#82d095', endColorstr='#fafafa')"; /* IE8 */  
+  
+}  
+
+
+.noneBorderInput{
+    border:1px;
+    border-bottom-style:none; 
+    border-top-style:none;
+    border-left-style:none;
+    border-right-style:none;
+    width:4rem;  
+    height:2rem; 
+    position: relative; 
+    top:0rem; 
+    left:0rem;
+    text-align:center;
+    
+}
+
+.dailyPaperInput{
+    border:1px;
+ /*   border-bottom-style:none; 
+    border-top-style:none;
+    border-left-style:none;
+    border-right-style:none;*/
+    width:2.1rem;  
+    height:1rem; 
+    position: relative; 
+    top:0rem; 
+    left:30%;
+    text-align:center;
+
+
+    border:solid 0.5px red;
+}
+
+
+.side-bar {width: 66px;position: fixed;bottom: 0px;right: -3rem ;font-size: 0;line-height: 0;z-index: 100;} 
+.side-bar a {width: 15px;height: 15px;display: inline-block;margin-bottom: 2px;} 
+.side-bar a:hover {background-color: #669fdd;} 
+
+
+
+
+
+ /*用户注册*/
+
+ /*农场注册*/
+
+ /*栋舍列表*/
+
+ /*栋舍修改*/
+ 
+ /*栋舍添加*/
+ /*员工列表*/
+ /*员工修改*/
+ /*员工添加*/
+ /*用户登录*/
+ /*忘记密码*/
+ /*免责声明*/
+ /*主页面*/
+
+table{
+    
+
+}
+th,td{
+
+}
+
+a{
+    text-decoration:none;
+}
+
+.textStyle{
+    position: relative;
+    top:1rem;
+    left:0.3rem;
+    font-size:1rem;
+    text-align:center;
+    margin:0 auto;
+    
+}
+
+.imgStyle{
+    position: relative;
+    top:1rem;
+    left:43%;
+    width: 2rem;
+    height: 2rem;
+
+}
+
+
+ /*信息维护*/
+ /*个人信息*/
+ /*关于页面*/
+ /*联系我们*/
+ #allmap {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin:0;
+    font-family:"微软雅黑";
+}
+ /*权限控制*/
+ /*批次管理*/
+ /*新建批次*/
+ #newBatchId {
+    position: relative;
+    top:0%;
+    left:0.25%;
+    width: 99%;
+    height: 60px;
+ }
+.newBatchDiv {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.TableHouseStyle {
+    /*background: #E3E3E3 !important;*/   
+    color:#2f7fff;
+    text-align:center;
+
+}
+.TableTotalStyle {
+    /*background: #E3E3E3 !important;*/ 
+    color:#000;
+    text-align:center;
+
+}
+.TablePlaceNumStyle{
+    /*background: #FFF !important;*/
+    color:#000;
+    text-align:center;
+
+}
+.TableTotalPlaceNumStyle{
+    /*background: #FFF !important;*/
+    color:#989898;
+    text-align:center;
+
+}
+
+
+
+
+
+ /*批次结算*/
+ /*日报填制*/
+.leftCol{
+    border-bottom:solid 1px #ECECEC; 
+    border-left:solid 1px #ECECEC; 
+    border-right:solid 0px #ECECEC; 
+    border-top:solid 1px #ECECEC;
+    height:2rem;
+}
+
+.rightCol{
+    border-bottom:solid 1px #ECECEC; 
+    border-left:solid 0px; 
+    border-right:solid 1px #ECECEC; 
+    border-top:solid 1px #ECECEC;
+    height:2rem;
+}
+
+.aboveCol{
+    height:2rem; 
+    border-bottom:solid 0px #ECECEC; 
+    border-left:solid 1px #ECECEC; 
+    border-right:solid 1px #ECECEC; 
+    border-top:solid 1px #ECECEC;
+}
+
+.followingCol{
+    height:2rem; 
+    border-bottom:solid 1px #ECECEC; 
+    border-left:solid 1px #ECECEC; 
+    border-right:solid 1px #ECECEC; 
+    border-top:solid 0px #ECECEC;
+}
+
+.tableLine{
+    border:solid 1px #878787; background:#fff;
+}
+
+ /*日报统计*/
+ /*入雏*/
+ /*环控监视*/
+
+ .tableTitle{
+    border:1px solid #fff; 
+    width:3.4rem; 
+    height:1.4rem;  
+    position:relative; 
+    top:0.7rem; 
+    left:0rem; 
+    font-size:0.8rem;
+}
+
+.tableContent{
+    border:1px solid #fff; 
+    width:3.4rem; 
+    height:1.4rem;  
+    position:relative; 
+    top:0rem; 
+    left:0rem;
+}
+
+.thermometer{
+    /*width: 100%;
+    height:4.3rem; 
+    border:1px solid #969696; 
+    position: relative;
+    top:2rem;
+    left:2%;*/
+
+
+    width: 100%;
+    width:6rem;
+    height:4.3rem; 
+    border:1px solid #969696; 
+    position: relative;
+    top:2rem;
+    left:2%;
+
+}
+
+.tempPosition{
+    position: relative;
+    top:5%;
+    left:5%;
+    font-size:1rem;
+    color: black;
+}
+
+.tempNumber{
+    position: relative;
+    top:-0.3rem;
+    left:1rem;
+    font-size:0.8rem;
+    /*width: 2rem;*/
+    height: 1rem;
+    color: black;
+}
+
+.tempNumber2{
+    position: relative;
+    top:-0.3rem;
+    left:1rem;
+    font-size:0.8rem;
+    /*width: 2rem;*/
+    height: 1rem;
+    color: black;
+    clear: both;
+}
+
+
+
+#buildingSelect {
+    position: relative; 
+    top:-0.2rem; 
+    left:2rem;
+
+    background-color:transparent;
+    border:5px solid transparent;
+    color: rgba(129, 124, 132, 1);
+
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+
+}
+
+.tableTitleRow{
+    border:solid 1px  #fff; 
+    background:#c8e5ca;
+    color: #878787;
+}
+
+.tableContentRow{
+    border:solid 1px  #fff; 
+    background:#f4f4f4;
+    color: rgba(64, 152, 252, 1);
+}
+
+
+
+
+ /*报警统计*/
+
+.dailyTablelLine{
+    border:solid 1px  #ECECEC; 
+    background:#fff;
+    color: #878787;
+    position: relative; 
+    top:0rem; 
+    left:0rem;
+    width:4rem;
+    /*height:2rem;*/
+}
+
+
+.tableContentFont{
+    color: rgba(92, 92, 92, 1);
+}
+
+
+ /*报警设置*/
+ /*报警日志*/
+ .titleFontColor{
+    color: #000;
+ }
+ /*测试界面*/
+
+/*环控温度表*/
+
+#tempChart_DIV {
+  /*border:solid 1px #000;*/
+}
+
+#TempHumi_DIV {
+    /*border:solid 1px #000;*/
+}
+
+
+#table_DIV{
+    /*border:solid 1px #000;*/
+    position: relative; 
+    top:0rem; 
+    left:0rem;
+}
+
+
+.select-style {
+    position: relative;
+    top:-17px;
+    /*left:40%;*/
+    left:30%;
+    border:solid 1px  #fff;
+    color: #000;
+    
+   /* width:6.5rem;*/
+    width:6rem;
+    height:2rem;
+
+    
+    /*appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+*/    
+}
+.select-style {
+    position: relative;
+    top:-30px;
+    left:80px;
+    border:solid 1px  #fff;
+    color: #000;   
+    width:6rem;
+    height:2rem;
+}
+
+.select-style_temp {
+    position: relative;
+    top:-30px;
+    left:60px;
+    border:solid 1px  #fff;
+    color: #000;   
+    width:6rem;
+    height:2rem;
+}
+
+
+.blue {
+  background-color: #FFFAF0;
+  width: 200%;
+  height:18rem; 
+}
+
+/*死淘率图*/
+
+
+/*公用*/
+
+
+
+.hiddenTableLine{
+    border:solid 0px #FFF; background:#fff;
+}
+
+/*输入框提示字体颜色*/
+.fontColor {
+    color: #2f7fff;
+}
+
+/*生产日报*/
+.tableBody{
+    border-left:solid 0.5px #ECECEC; 
+    border-right:solid 0.5px #ECECEC; 
+    border-bottom:solid 0.5px #ECECEC; 
+    border-top:solid 0.5px #ECECEC;
+}
+.tableHead{
+    border-left:solid 0px #ECECEC; 
+    border-right:solid 0px #ECECEC; 
+    border-bottom:solid 0px #ECECEC; 
+    border-top:solid 0px #ECECEC;
+}
+.p_simple{
+    padding-left:10px;
+    padding-right:13px;
+    text-align:justify;
+}
+.ul_simple{
+    padding-left:30px;
+    padding-right:13px;
+    list-style-position: outside;
+    text-align:justify;
+}
+
+
+
+
+.dailyReportDiv{
+    width: 100%;
+    height: 70%;
+}
+
+/*周报查看*/
+.weeklyDiv{
+    width: 100%;
+    height: 70%;
+}
+
+.weeklyCellStyle{
+    text-align:center;
+}
+
+
+
+/*公共的*/
+/*------------------------------------*/
+
+/*居中*/
+.middle {
+    text-align:center;
+    margin:0 auto;
+    
+}
+/*居中加粗*/
+.middlebold {
+    text-align:center;
+    margin:0 auto;
+	font-weight:bold;
+    
+}
+/*整个屏幕大小*/
+.fullScreen{
+    height:100%;
+    width:100%;
+}
+
+/*------------------------------------*/
+
+
+/*landingPage用户登录*/
+/*------------------------------------*/
+#loginTitle_P{
+    position:relative; 
+    left:0px; 
+    top:0px;
+    height:50px;
+    width:100%;  
+    color:white;
+}
+#loginTitle_Span{
+    position:relative; 
+    left:25%; 
+    top:30%;
+    font-size:35px;
+}
+#loginTitle_R{
+    position:relative; 
+    left:25%; 
+    top:-10%;
+    font-size:10px;
+}
+#loginTitle_Version{
+    position:relative; 
+    left:24%; 
+    top:32%;  
+    font-size:12px;
+}
+
+#loginInputDiv{
+    margin:0 auto;
+    position:relative; 
+    left:0px; 
+    top:0px;
+    height:150px; 
+    background-color: #b7e9c0;
+    /*圆角*/
+    font-family: Arial;
+    border-radius: 20px;
+    padding: 30px 30px;
+    width: 290px
+}
+#iphoneImg{
+    height:30px;
+    width:30px;
+    position:relative; 
+    left:15px; 
+    top:0px;
+    /*border:solid 0.5px red;*/
+}
+#iphoneInput{
+    background-color:transparent; 
+    height:30px;
+    position:relative; 
+    left:20px; 
+    top:0px;
+    margin-left:35px; 
+    margin-top:-35px;
+    size:25;
+}
+#passwordImg{
+    height:30px;
+    width:30px;
+    position:relative; 
+    left:15px; 
+    top:0px;
+}
+#passwordInput{
+    background-color:transparent; 
+    height:30px;
+    position:relative; 
+    left:20px; 
+    top:0px;
+    margin-left:35px; 
+    margin-top:-35px;
+    size:25;
+}
+#underline{
+    position:relative; left:22%; 
+    top:0px; height:0.5; 
+    width:70%; 
+    border:solid 0.5px #ECECEC;
+}
+#saveText{
+    position:relative; 
+    left:30px; 
+    top:20px;  
+    font-size:14px;
+}
+#saveToggle{
+    position:relative; 
+    left:-5px; 
+    top:-15px; 
+    height:50px;  
+    border:0px solid #b7e9c0; 
+    background:url(img/clear_image.png);
+}
+#landingBtnArea{
+    position:relative; 
+    left:0px; 
+    top:0px;
+}
+#serverText{
+    position:relative; 
+    left:55px; 
+    top:15px;
+}
+#selectServer{
+    position:relative; 
+    left:75px; 
+    top:15px;  
+}
+#registerBtn{
+    position:relative; 
+    left:-140px; 
+    top:50px;
+}
+#seekCipherBtn{
+    position:relative; 
+    left:-30px; 
+    top:50px;
+}
+#landingBtn{ 
+    position:relative; 
+    left:0px; 
+    top:60px;
+    width:200px;
+    background-color:#b7e9c0; 
+    color:#1994fc; 
+    font-family: Arial; 
+    border-radius: 10px; 
+    padding: 0px; 
+    font-size:15px;
+}
+#trialBtn{
+    position:relative; 
+    left:0px; 
+    top:60px;
+}
+#companyInfo{
+    position:relative; 
+    left:40px; 
+    top:100px;
+    height:30px;
+    width:30px;
+    color:#fff;
+}
+#clauseDiv{
+    position:absolute; 
+    right:0px; 
+    bottom:0px;
+    height:60px;
+    width:60px;
+}
+#clauseImg{
+    position:absolute; 
+    right:0px; 
+    bottom:0px;
+    height:18px;
+    width:18px;
+}
+/*------------------------------------*/
+
+
+
+/*生产指标汇总*/
+/*------------------------------------*/
+.grid {
+    width: 100%;
+    height: 70%;
+    /*text-align:center;*/
+}
+/*------------------------------------*/
+/*月度成本核算*/
+/*------------------------------------*/
+#theMonthId{
+    position: relative;
+    top:0%;
+    left:0.25%;
+    width: 99%;
+    height: 60px;
+}
+.theMonthDiv{
+    text-align:center;
+    width: 100%;
+    height: 100%;
+}
+/*------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

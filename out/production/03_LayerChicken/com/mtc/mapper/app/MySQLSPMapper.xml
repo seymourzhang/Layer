@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtc.mapper.app.MySQLSPMapper" >
+  <select id="exec_s_p_createTargetMonitor" statementType="CALLABLE" parameterType="java.util.HashMap"
+  		resultType="String">    
+           {call s_p_createTargetMonitor(
+              #{in_buzType,mode=IN,jdbcType=NVARCHAR},
+              #{in_houseBreedId,mode=IN,jdbcType=INTEGER}
+           )}    
+  </select>
+  <select id="exec_s_b_task_test" statementType="CALLABLE" parameterType="java.util.HashMap"
+  		resultType="String">    
+           {call s_p_testSP(
+              #{in_name,mode=IN,jdbcType=NVARCHAR}
+           )}    
+  </select>
+  <select id="exec_s_p_dealMonitorAlarm" statementType="CALLABLE"
+  		resultType="String">    
+           {call s_p_dealMonitorAlarm()}    
+  </select>
+  <select id="exec_s_p_createHouseTask" statementType="CALLABLE" parameterType="java.util.HashMap"
+  		resultType="String">    
+           {call s_p_createHouseTask(
+           	   #{in_farm_id,mode=IN,jdbcType=INTEGER},
+           	   #{in_apply_flag,mode=IN,jdbcType=NVARCHAR},
+           	   #{in_temp_id,mode=IN,jdbcType=INTEGER}
+           )}    
+  </select>
+  <select id="exec_s_p_createFarmTask" statementType="CALLABLE" parameterType="java.util.HashMap"
+  		resultType="String">    
+           {call s_p_createFarmTask(
+           	   #{in_apply_flag,mode=IN,jdbcType=NVARCHAR},
+           	   #{in_FarmId,mode=IN,jdbcType=INTEGER}
+           )}    
+  </select>
+</mapper>

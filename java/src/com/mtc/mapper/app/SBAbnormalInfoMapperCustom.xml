@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mtc.mapper.app.SBAbnormalInfoMapperCustom">
+  <resultMap id="BaseResultMap" type="com.mtc.entity.app.SBAbnormalInfo">
+    <id column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <id column="house_id" jdbcType="INTEGER" property="houseId" />
+    <id column="alarm_code" jdbcType="VARCHAR" property="alarmCode" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="standar_delay" jdbcType="INTEGER" property="standarDelay" />
+    <result column="deal_status" jdbcType="VARCHAR" property="dealStatus" />
+    <result column="deal_delay" jdbcType="INTEGER" property="dealDelay" />
+    <result column="deal_time" jdbcType="TIMESTAMP" property="dealTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <update id="updateToDelayedByHouseId">
+    update s_b_abnormal_info
+    set 
+      deal_status = '02',
+      deal_delay = #{delayTime,jdbcType=INTEGER},
+      deal_time = now(),
+      modify_time = now()
+    where house_id = #{houseId,jdbcType=INTEGER} and deal_status = '01'
+  </update>
+</mapper>

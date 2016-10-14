@@ -1,0 +1,57 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" style=" left:-6%; width:20%;  height: 100%;" ng-click="goDataAnalyseTable()"></a>
+    <h1 id="cullSurTi" class="title">
+      生产指标汇总
+    </h1>
+</div>
+    <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden;">
+
+    	<div ui-grid="gridOptions" class="grid" ui-grid-pinning></div>   
+    	
+    	<div style="height: 2.5rem;">
+            <div style="float:left; width:40%;  height: 2.5rem;overflow:hidden; ">
+                <p  style="position: relative; top:5px;left:5%;">
+                  筛选:
+                </p>
+                <select class="select-style" ng-change = "changesCompareType()" ng-model="prodQuotData.compareType">  
+                    <option value="{{key}}" ng-repeat="(key,val) in myConfig.CompareType" ng-selected="key==prodQuotData.compareType">{{val}}</option> 
+                </select> 
+            </div>
+
+
+
+            <div ng-show = "batchDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+                  <p  style="position: relative; top:5px;left:5%;">
+                    请选择:
+                  </p>
+                  <select class="select-style" ng-change = "changesBatch()" ng-model="prodQuotData.selectedBatch">
+                          <option value        =  "{{key}}"
+                                  ng-repeat    =  "(key,val) in prodQuotData.batchTable"
+                                  ng-selected  =  "key==prodQuotData.selectedBatch">
+                              {{val}}
+                          </option>
+                  </select>
+            </div>
+
+
+            <div ng-show = "housesDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+                  <p  style="position: relative; top:5px;left:5%;">
+                    请选择:
+                  </p>
+                  <select class="select-style" ng-change = "changesHouses()" ng-model="prodQuotData.selectedHouse">
+                          <option value        =  "{{item}}"
+                                  ng-repeat    =  "item in prodQuotData.houseTable"
+                                  ng-selected  =  "item.HouseId == prodQuotData.selectedHouse">
+                              {{item.HouseName}}栋
+                          </option>
+                  </select>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>
+
+
+
+

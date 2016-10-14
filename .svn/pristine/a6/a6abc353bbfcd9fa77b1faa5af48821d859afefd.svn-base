@@ -1,0 +1,158 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="envMonitoring"></a>
+    <h1 class="title">
+      环控报警统计
+    </h1>
+</div>
+    <ion-content class="has-header">
+<ion-list>
+      <ion-item ng-repeat  =  "item in alarmStatisticsData.houseData"
+                style = "border:solid 0px #fff;">
+
+      	<div 	style="width             :  111%     ;
+    	      			   height            :  6.4rem   ;
+    	      			   background-color  :  #fff     ;
+    	      			   position          :  relative ;
+                     top               :  -1rem    ;
+                     left              :  -1rem    ;
+                     border:solid 0px #fff;">
+                <!-- ng-click="goAlarmLog();" -->
+          <a href="#/alarmStatistics/alarmLog/{{transferHouseId}}/{{buildingDayAge}}" style="text-decoration:none;">
+            <div style="width             :  100%     ;
+        	      				height            :  2rem     ;
+        	      				background-color  :  #a5d5a9  ;
+        	      				position          :  relative ;
+                        top               :  1.7rem   ;
+                        left              :  0rem     ;"
+                  ng-click="goAlarmLog(item);">
+                  
+                <div style="height    :  2rem      ; 
+							              width     :  5rem      ;
+						                float     :  right     ;
+						                position  :  relative  ;
+                	    	    top       :  0rem      ;
+                	    	    left      :  -1rem     ;">
+          					<p style="text-align:right; 
+            						      font-size   :  1.4rem     ;
+            						      position    :  relative   ;
+                    	    	  top         :  0.5rem     ;
+                    	    	  left        :  -3rem      ;">
+          	                    {{item.dayAge}}
+                    </p>
+    					
+          					<p style="font-size :  0.7rem     ;
+          							      position  :  relative   ;
+                    	    	  top       :  -0.8rem    ;
+                    	    	  left      :  2.5rem     ;">
+                          	   	日龄
+                    </p>
+				        </div>
+
+                <div class="row" style="width     :  30%       ;  
+                            						height    :  120%      ;
+                            						position  :  relative  ;
+                            		  			top       :  -10%      ;
+                            		  			left      :  -2%       ;">
+            				  <div class="col">
+              				  	<img src="img/icon/farmimg.png" style="height    :  18px    ; 
+                                		    														width     :  18px    ;
+                                		    														position  :  relative  ;
+                                            		  									top       :  0rem   ;
+                                            		  									left      :  5%        ;" />
+                			</div>
+          						<div style="width     :  7rem      ;  
+                        					height    :  1.5rem    ;
+                        					color     :  #5c5c5c   ;
+                        					position  :  relative  ;
+                          	    	top       :  0.3rem    ;
+                          	    	left      :  1.2rem    ;
+                          	    	font-size :  1.4rem    ;">
+                							{{item.houseName}}
+    					   	    </div>
+						
+				        </div>
+			     </div>
+			   </a>
+
+
+
+
+			    <table class="tableLine middle"   style="position: relative; 
+                                                   top:2rem; 
+                                                   left:-0.4rem;
+                                                   width:102.5%;
+                                                   height:2rem;
+                                                   font-size:0.7rem;">
+
+                <tr>
+                  <td class="tableTitleRow" style="width:3rem;"></td>
+                  <td class="tableTitleRow">平均</td>
+                  <td class="tableTitleRow">前区</td>
+                  <td class="tableTitleRow">中区</td>
+                  <td class="tableTitleRow">后区</td>
+                  <td class="tableTitleRow" style="width:4rem;">点温差</td>
+                  <td class="tableTitleRow" style="width:4rem;">断电</td>
+                </tr>
+                <tr>
+                  <td class="tableContentRow">
+                    <img src="img/icon/arrow/upArrow/upArrow.png" style="height    :  0.8rem    ; 
+                                                                         width     :  0.8rem    ;
+                                                                         position  :  relative  ;
+                                                                         top       :  0rem      ;
+                                                                         left      :  0rem      ;" />
+                  </td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_avg_alarm.temp_avg_alarm_H}}</td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_in1_alarm.temp_in1_alarm_H}}</td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_in2_alarm.temp_in2_alarm_H}}</td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_in3_alarm.temp_in3_alarm_H}}</td>
+        				  <td class="tableContentRow" rowspan="2">
+                    <p  class="tableContentFont" style="font-size  :  1.4rem    ;
+                                                        position   :  relative  ; 
+                                                        top        :  0.7rem    ; 
+                                                        left       :  0rem      ;">
+                        {{item.point_temp_alarm}}
+                    </p>
+                  </td>
+        				  <td class="tableContentRow" rowspan="2">
+                    <p  class="tableContentFont" style="font-size  :  1.4rem    ;
+                                                        position   :  relative  ; 
+                                                        top        :  0.7rem    ; 
+                                                        left       :  0rem      ;">
+                        {{item.power_status}}
+                    </p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="tableContentRow">
+                    <img src="img/icon/arrow/downArrow/arrow.png" style="height    :  0.8rem    ; 
+                                                                           width     :  0.8rem    ;
+                                                                           position  :  relative  ;
+                                                                           top       :  0.1rem    ;
+                                                                           left      :  0rem      ;" />
+                  </td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_avg_alarm.temp_avg_alarm_l}}</td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_in1_alarm.temp_in1_alarm_L}}</td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_in2_alarm.temp_in2_alarm_l}}</td>
+        				  <td class="tableContentRow tableContentFont">{{item.temp_in3_alarm.temp_in3_alarm_L}}</td>
+                </tr>
+          </table>
+		</div>
+
+      </ion-item>
+    </ion-list>
+
+    <br />
+
+    <br />
+    </ion-content>
+    <!-- <div class="tabs tabs-stable tabs-icon-top">
+    <a class="tab-item active">
+     <i class="icon ion-ios-paper-outline"></i>环控监视
+    </a>
+    <a class="tab-item">
+     <i class="icon ion-ios-book-outline"></i>报警统计
+    </a>
+   </div> -->
+</ion-view>

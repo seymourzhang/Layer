@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtc.mapper.app.SBChickenStandarMapperCustom" >
+  <resultMap id="BaseResultMap" type="com.mtc.entity.app.SBChickenStandar" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <id column="farm_id" property="farmId" jdbcType="INTEGER" />
+    <id column="feed_type" property="feedType" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="weight_per" property="weightPer" jdbcType="DECIMAL" />
+    <result column="weight_diff_per" property="weightDiffPer" jdbcType="DECIMAL" />
+    <result column="feed_conversion" property="feedConversion" jdbcType="DECIMAL" />
+    <result column="acc_feed" property="accFeed" jdbcType="DECIMAL" />
+    <result column="create_person" property="createPerson" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_person" property="modifyPerson" jdbcType="INTEGER" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <select id="selectStandarInfoByFeedType" resultMap="BaseResultMap"  parameterType="java.lang.String">
+    select id, farm_id, feed_type, age, weight_per, weight_diff_per, feed_conversion, 
+    acc_feed, create_person, create_date, create_time, modify_person, modify_date, modify_time
+    from s_b_chicken_standar where feed_type = #{feedType,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,54 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="monthCost"></a>
+	<h1 class="title">
+	  青年鸡身价摊销
+	</h1>
+  <a class="button" ng-click = "save()">保存</a>
+</div>
+<ion-content class="has-header">
+
+
+    <label class="item item-input"> 
+      <span class="input-label fontColor">入舍数量</span> 
+        <i class="icon ion-ios-arrow-forward"></i>
+          <input type="text" placeholder="自动计算" ng-model="youngChickData.PulletMsg.SumOfAmount" readonly="readonly" style="background:#FFF; color:#989898;" />
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">只</p>
+    </label>
+    
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">单位成本</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="number" ng-change="calculate()" placeholder="请输入" ng-model="youngChickData.PulletMsg.Price" style="background:#FFF;"/> 
+            <p style="position: absolute; top:15px; right:1.4rem; height:1.5rem;">元/只</p>
+    </label>
+ 
+    <label class="item item-input"> 
+      <span class="input-label fontColor">总成本</span> 
+        <i class="icon ion-ios-arrow-forward"></i>
+          <input type="text" placeholder="自动计算" ng-model="youngChickData.PulletMsg.SumOfMoney" readonly="readonly" style="background:#FFF; color:#989898;" />
+          <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+    </label>
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">只累计产蛋重</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="number" ng-change="calculate()" placeholder="(计划)" ng-model="youngChickData.PulletMsg.SumLayAmount" style="background:#FFF;"/> 
+            <p style="position: absolute; top:15px; right:1.4rem; height:1.5rem;">公斤</p>
+    </label>
+
+    <label class="item item-input"> 
+      <span class="input-label fontColor">每公斤蛋摊销</span> 
+        <i class="icon ion-ios-arrow-forward"></i>
+          <input type="text" placeholder="自动计算" ng-model="youngChickData.PulletMsg.CostPerUnit" readonly="readonly" style="background:#FFF; color:#989898;" />
+          <p style="position: absolute; top:15px; right:1.4rem; height:1.5rem;">元/公斤蛋</p>
+    </label>
+    <br>
+    <div class="middle">
+      <a class="button  button-balanced saveBtn" ng-click="save()">保   存</a>
+    </div>
+
+
+</ion-content>
+</ion-view>

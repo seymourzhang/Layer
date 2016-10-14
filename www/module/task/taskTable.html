@@ -1,0 +1,46 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="taskSet"></a>
+    <h1 class="title">
+      {{taskTableData.showTaskType}}
+    </h1>
+    <a class="button icon ion-plus button-clear" href="#/module/task/addTask/{{TaskType}}"></a>
+</div>
+    <div class="bar bar-subheader" style="border:1px solid #fff; background:#fff; background-color:#fff;">
+        <table style="width:100%;table-layout:fixed;word-break:break-;">
+            <tr>
+                <td style="width:60%; height:40px;">
+                    <span style="position:relative;top:0.5rem;left:1.5rem; font-size:16px;"><strong>任务项</strong></span> 
+                </td>
+                <td style="width:20%;">
+                    <span style="position:relative;top:0.5rem;left:1rem;font-size:16px;"><strong>适用日龄</strong></span>
+                </td>
+                <td style="width:20%;">
+                    <span></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+	<ion-content class="has-header">
+    <!-- #ECECEC -->
+		<table ng-hide="taskTable" style="width:100%; position:relative;top:3.5rem;left:0rem; table-layout:fixed;word-break:break-;">
+    		<tr ng-repeat="item in taskTableData.TaskDetail" style="border:solid 1px #ECECEC;">
+    			<td style="width:60%; height:40px; border:solid 0px #FFF;">
+                    <a href="#/module/task/updateTask/{{TaskType}}/{{taskTableData.conveyTskID}}" style="textDecoration:none; width:200px;height:40px;display:block;" ng-click="obtainTskId(item)">
+    				    <span style="position:relative;top:0.5rem;left:1rem;font-size:15px; width:3rem; color:#2f7fff; ">{{item.TaskName}}</span>
+                    </a>
+    			</td>
+    			<td style="width:20%; border:solid 0px #FFF;">
+                    <a href="#/module/task/updateTask/{{TaskType}}/{{taskTableData.conveyTskID}}" style="textDecoration:none; width:80px;height:40px;display:block;" ng-click="obtainTskId(item)">
+    				    <span style="position:relative;top:0.5rem;left:1rem;font-size:15px; display: block; width: 80px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color:#2f7fff;">{{item.ageInfos}}</span>
+                    </a>
+    			</td>
+    			<td class="middle" style="width:20%; border:solid 0px #FFF;">
+                    <a href="#/module/task/updateTask/{{TaskType}}/{{taskTableData.conveyTskID}}" style="textDecoration:none; width:80px;height:40px;display:block;" ng-click="obtainTskId(item)">
+    				    <i class="icon ion-chevron-right icon-accessory" style="position:relative;top:0.5rem;left:1rem; color:#000;"></i>
+                    </a>
+    			</td>
+    		</tr>
+    	</table>
+	</ion-content>
+</ion-view>

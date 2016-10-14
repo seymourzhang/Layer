@@ -1,0 +1,68 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+    <a class="button icon ion-chevron-left button-clear" ng-click="backFun()" ></a>
+    <!-- ui-sref="" -->
+    <h1 class="title">
+      农场报警设置
+  </h1>
+  
+   <!-- href="#/module/eggsells/eggSellsTable/eggSellsReport" -->
+</div>
+
+<ion-content class="has-header">
+	
+	
+    <div class="list"> 
+
+	   <div  height="25" style="position:relative; left:0px; top:0px;background-color:#F4F4F4;">
+          
+          <ion-toggle ng-model="farmData.checked" ng-change="pushNotificationChange()" style="position:relative; left:0px; top:0px; height:50px;  border:0px solid #b7e9c0; background:url(img/clear_image.png);">
+           语音报警启动
+          </ion-toggle>
+	  
+	  </div>
+	  
+	  <label class="item item-input"> 
+        <span class="input-label fontColor">一级报警人</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input readonly="readonly" type =  "text" ng-model = "farmData.alarmer1" />
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;"></p>
+      </label>
+	  
+
+      <label class="item item-input item-select"> 
+        <span class="input-label fontColor">二级报警人</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select id="erji" ng-model   =  "farmData.alarmer2"
+			ng-change  =  "selectUser()"> 
+                <option value        =  "{{item.id}}" 
+                        ng-repeat    =  "item in farmData.alarmer2s" 
+                        ng-selected  =  "item.id == farmData.alarmer2">{{item.name}}</option> 
+            </select>
+      </label>
+
+      <label class="item item-input item-select"> 
+        <span class="input-label fontColor">三级报警人</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select  id="sanji" ng-model   =  "farmData.alarmer3"> 
+                <option value        =  "{{item.id}}" 
+                        ng-repeat    =  "item in farmData.alarmer3s" 
+                        ng-selected  =  "item.id == farmData.alarmer3">{{item.name}}</option> 
+            </select>
+			
+      </label>
+	  
+
+
+     <br /> 
+     <div class="middle">
+		<a class="button  button-balanced saveBtn" ng-click="save()">保   存</a>
+	</div>
+
+
+    </div> 
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+</ion-view>

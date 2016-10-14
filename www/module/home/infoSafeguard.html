@@ -1,0 +1,41 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      信息维护
+    </h1>
+    <button id="chang" class="button" ng-click="showConfirm()">退出</button>
+</div>
+    <ion-content class="has-header">
+        <ion-list>
+          <div>
+            <ion-item class="item-icon-right" ng-click="goFarmRegistered()">
+                  农场注册信息
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" ng-click="goBuildingTable()">
+                  农汇通设备绑定
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" ng-click="goEmployeesTable()">
+                  人员注册信息
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+          </div>
+
+          <ion-item class="item-icon-right" ui-sref="modifyUserInfo">
+                  用户密码修改
+             <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+
+        </ion-list>
+        <br /> 
+        <br /> 
+        <br />
+        <br /> 
+        <br /> 
+        <br />
+    </ion-content>
+</ion-view>

@@ -1,0 +1,313 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="batchManage"></a>
+    <h1 class="title">
+      盈利报告
+    </h1>
+</div>
+    <div class="bar bar-subheader" style="border:1px solid #fff; background-color:#f5f5f5;">
+      <table class="tableLine middle"  style="position: relative; 
+                                              top:-0rem; 
+                                              left:-0.4rem;
+                                              width:103.5%;
+                                              font-size: 0.9rem;">
+        <tr style="height:2rem;">
+          <td  class="tableLine" style="width:12.00%;">
+            
+          </td>
+          <td  class="tableLine" style="width:39.99%;" colspan="3">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>本批次</strong>
+            </span>
+          </td>
+          <td  class="tableLine" style="width:39.99%;" colspan="3">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>上批次</strong>
+            </span>
+          </td>
+        </tr>
+
+
+
+
+        <tr style="height:2rem;">
+          <td  class="tableLine" style="width:12.00%;">
+            
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+             <strong>万元</strong>
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>元/公斤</strong>
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>元/只</strong>
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>万元</strong>
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>元/公斤</strong>
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+              <strong>元/只</strong>
+            </span>
+          </td>
+        </tr>
+      </table>
+
+
+
+    </div>
+    <ion-content class="has-header" style = "background-color:#f5f5f5;">
+      <div style="width: 100%;  height:5rem;">
+            
+      </div>
+
+      
+
+
+      <table id="incomeTable" class="tableLine middle"   style="position: relative; 
+                                                                top:0rem; 
+                                                                left:0rem;
+                                                                width:100%;
+                                                                font-size: 0.9rem;">
+          <tr ng-repeat="item in profitReportData.InCome" style="height:2rem;">
+          <td  class="tableLine" style="width:12.00%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         font-size: 1rem;"
+                  ng-style="{{judgeIncome(item)}}">
+                {{item.ItemName}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+                {{item.PricSum_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePKilo_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePUnit_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+                {{item.SaleChicken_last}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePKilo_last}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePUnit_last}}
+            </span>
+          </td>
+        </tr>
+      </table>
+
+
+      <div style="position: relative; 
+                  top:0rem; 
+                  left:0rem;
+                  width:100%;
+                  height:1rem;">
+      
+      </div>
+      
+
+      <table id="payTable" class="tableLine middle"  style="position: relative; 
+                                              top:-0.6rem; 
+                                              left:0rem;
+                                              width:100%;
+                                              color:#E3E3E3E3;
+                                              background-color:#f5f5f5;
+                                              font-size: 0.9rem;">
+        <tr ng-repeat="item in profitReportData.Expense" style="height:2rem;">
+          <td  class="tableLine" style="width:12.00%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         font-size: 1rem;"
+                  ng-style="{{judgeCost(item)}}">
+                {{item.ItemName}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+                {{item.PricSum_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePKilo_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePUnit_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+                {{item.SaleChicken_last}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePKilo_last}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{item.PricePUnit_last}}
+            </span>
+          </td>
+        </tr>
+      </table>
+
+      <div style="position: relative; 
+                  top:0rem; 
+                  left:0rem;
+                  width:100%;
+                  height:1rem;">
+      
+      </div>
+
+
+      <table id="totalTable" class="tableLine middle"  style="position: relative; 
+                                              top:-1.2rem; 
+                                              left:0rem;
+                                              width:100%;
+                                              color:#E3E3E3E3;
+                                              font-size: 0.9rem;">
+        <tr style="height:2rem;">
+          <td  class="tableLine" style="width:12.00%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         font-weight: bold;
+                         font-size: 1rem;">
+                {{profitReportData.Profits.ItemName}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+                {{profitReportData.Profits.PricSum_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{profitReportData.Profits.PricePKilo_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{profitReportData.Profits.PricePUnit_this}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;">
+                {{profitReportData.Profits.SaleChicken}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{profitReportData.Profits.PricePKilo}}
+            </span>
+          </td>
+          <td  class="tableLine" style="width:13.33%;">
+            <span style="position: relative; 
+                         top:0.2rem; 
+                         left:0rem;
+                         color:#A9A9A9;">
+                {{profitReportData.Profits.PricePUnit}}
+            </span>
+          </td>
+        </tr>
+      </table>
+
+
+    </ion-content>
+</ion-view>

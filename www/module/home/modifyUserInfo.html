@@ -1,0 +1,57 @@
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" 
+       ui-sref="infoSafeguard">
+    </a> 
+    <h1 class="title"> 密码修改 </h1> 
+   </div> 
+   <ion-content class="has-header"> 
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">原密码</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="password" 
+                   placeholder="请输入原密码" 
+                   ng-change="oldPassWordLostFocus(oldPassWord)" 
+                   ng-model="oldPassWord" /> 
+      </label> 
+    <br />
+    <label class="item item-input" style="border-bottom:solid 0px; border-left:solid 0px; border-right:solid 0px; border-top:solid 0px;"> 
+      <span class="input-label fontColor">新设密码</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="password"  
+                 ng-change="newPassWordLostFocus(newPassWord)" 
+                 ng-model="newPassWord" /> 
+    </label>
+
+    <label class="item item-input"> 
+      <span class="input-label fontColor">再次输入密码</span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="password" 
+                 ng-change="confirmPassWordLostFocus(confirmPassWord)" 
+                 ng-model="confirmPassWord" /> 
+    </label>
+
+    <br /> 
+    <p class="middle" style="color:#CFCFCF;
+                             font-size:0.8rem">
+      如果您忘记密码，请联系4006233007。
+    </p>
+    <br /> 
+    <br />
+    <br /> 
+    <br />
+    <br /> 
+    <br /> 
+    <br />
+    <br /> 
+    <div class="middle"> 
+     <a class="button  button-balanced" 
+        style="width:240px; 
+               color:#FFFFFF;" 
+        ng-click="saveUpdate()" 
+        nav-transition="android">保   存</a> 
+    </div> 
+   </ion-content> 
+  </ion-view>
+

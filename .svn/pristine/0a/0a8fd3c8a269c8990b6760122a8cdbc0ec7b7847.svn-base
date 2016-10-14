@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtc.mapper.app.BaseQueryMapper" >
+  <select id="selectStringByAny" resultType="string" parameterType="string">
+    ${sql}
+  </select>
+  
+  <select id="selectIntergerByAny" resultType="Integer" parameterType="string">
+    ${sql}
+  </select>
+  
+  <select id="selectMapByAny" resultType="java.util.HashMap" parameterType="string">
+    ${sql}
+  </select>
+  
+  <select id="selectMapByAny2" resultType="java.util.LinkedHashMap" parameterType="string">
+    ${sql}
+  </select>
+  
+   <update id="updateIntergerByAny"  parameterType="string">
+    ${sql}
+   </update>
+   
+   <delete id="deleteByAny"  parameterType="string">
+    ${sql}
+  </delete>
+</mapper>

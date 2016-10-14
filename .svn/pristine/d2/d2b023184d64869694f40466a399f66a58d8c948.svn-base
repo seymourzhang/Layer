@@ -1,0 +1,178 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="goDailyTable()"></a>
+    <h1 class="title">
+      生产记录
+    </h1>
+	<a class="button" style="font-size:12pt;" ng-click="goProductionDaily()">日报</a>
+</div>
+      <div class="bar bar-subheader" style="border:1px solid #fff; background:#fff; background-color:#fff;border-bottom:solid 0.5px #878787;">
+          <table style="position: relative;top:0rem;left:-0.6rem;width:106%;height:32px; font-size: 0.9rem;">
+            <tr>
+              <td class="middle"><!--{{dailyReportData.CurDate}} font-weight: bold;-->
+                <span style="position: relative;top:0.5rem;left:0rem;">今天：{{dailyReportData.showDate}}日龄
+                </span>
+              </td>
+              <td >
+                <span style="position: relative;top:0.5rem;left:0rem;">生长{{dailyReportData.GrowthWeekAge}}周
+                </span>
+              </td>
+              <td >
+                <span style="position: relative;top:0.5rem;left:0rem;">产蛋{{dailyReportData.LayerWeekAge}}周
+                </span>
+              </td>
+            </tr>
+          </table>
+      </div>
+      <ion-content class="has-header">
+        <div style="width: 100%;  height:44px; ">
+            
+        </div>
+        <label class="item item-input item-select" style="border:solid 0px #fff; border-bottom:solid 1px #878787;  position: relative;  top:0rem;  left:0rem; height:3rem; width:100%; "> 
+          <span class="input-label" style="color: rgba(47, 127, 255, 1)">栋舍号 </span>
+            <i class="icon ion-ios-arrow-forward"></i> 
+              <select ng-model="dailyReportData.selectHouse"
+                      ng-change="judgeHouse()"> 
+                  <option value        =  "{{item}}" 
+                          ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                          ng-selected  =  "item.HouseId == dailyReportData.HouseId">
+                          {{item.HouseName}}栋
+                  </option> 
+              </select> 
+        </label>
+
+        <!-- <label class="item item-input item-select"> 
+          <span class="input-label fontColor">生产日期</span>
+           <i class="icon ion-ios-arrow-forward"></i> 
+           <select ng-model="dailyReportData.selectDayAge"
+                   ng-change="judgeDate()"> 
+              <option value        =  "{{item}}" 
+                      ng-repeat    =  "item in dailyReportData.dateArr"
+                      ng-selected  =  "item == dailyReportData.selectDayAge">
+                      {{item}}日龄
+              </option> 
+           </select> 
+        </label> -->
+
+
+        <label class="item item-input"> 
+            <span class="input-label fontColor">生产日期</span> 
+              <i class="icon ion-ios-arrow-forward"></i>
+              <ionic-datepicker  input-obj="datepickerObjectPopup"> 
+                <input type="text" ng-model="dailyReportData.DataDate"readonly="readonly" style="background-color: #fff;" ng-style="{{judgeCanEditor()}}"/> 
+              </ionic-datepicker>
+        </label>
+
+        
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">死淘数</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input ng-model="dailyReportData.culling_all"
+                     type="number" 
+                     placeholder="请输入" 
+					 ng-change="changeValue()"
+                     onfocus="if(this.value==0)this.value='';" 
+                     onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">只</p>
+        </label>
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">产蛋数</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input ng-model="dailyReportData.curLayNum"
+                     type="number" 
+                     placeholder="请输入"
+					 ng-change="changeValue()"
+                     ng-change="GetBoxNum()" 
+                     onfocus="if(this.value==0)this.value='';" 
+                     onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">枚</p>
+        </label>
+
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">总箱数</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input type="text" ng-model="dailyReportData.all_box_num" 
+                style="background-color: #fff; font-size:0.85rem;color:#989898" disabled/>
+              <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">箱</p>
+        </label>
+<!-- style="position: relative;top:0rem;left:0rem;width:15rem; height:1.5rem;" -->
+        <label class="item item-input item-select"> 
+          <span class="input-label fontColor">规格</span>
+          <!-- 该规格保存时key需要乘以2算出公斤的重量,同理查询时候要除以2 -->
+           <i class="icon ion-ios-arrow-forward"></i> 
+           <select ng-model="dailyReportData.egg_box_size"> 
+              <option value        =  "{{key}}" 
+                      ng-repeat    =  "(key,val) in myConfig.EggBoxNorms"
+                      ng-selected  =  "key==dailyReportData.egg_box_size">
+                  {{val}}斤/箱
+              </option> 
+           </select>
+           <!-- <p style="position: absolute; top:14px; right:0.5rem; width:3rem; height:1.5rem;"></p> -->
+        </label>
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">破损蛋</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input ng-model="dailyReportData.curBrokenNum"
+                     type="number" 
+                     placeholder="请输入" 
+					 ng-change="changeValue()"
+                     onfocus="if(this.value==0)this.value='';" 
+                     onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">枚</p>
+        </label>
+
+
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">采食量</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input ng-model="dailyReportData.daily_feed"
+                     type="number" 
+                     placeholder="请输入" 
+					 ng-change="changeValue()"
+                     onfocus="if(this.value==0)this.value='';" 
+                     onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:1.4rem; height:1.5rem;">公斤</p>
+        </label>
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">饮水量</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input ng-model="dailyReportData.daily_water"
+                     type="number" 
+                     placeholder="请输入"
+					 ng-change="changeValue()"					 
+                     onfocus="if(this.value==0)this.value='';" 
+                     onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:1.4rem; height:1.5rem;">立方</p>
+        </label>
+
+        <label class="item item-input"> 
+          <span class="input-label fontColor">鸡体重</span> 
+            <i class="icon ion-ios-arrow-forward"></i>
+              <input ng-model="dailyReportData.daily_weight"
+                     type="number" 
+                     placeholder="请输入"
+					 ng-change="changeValue()"					 
+                     onfocus="if(this.value==0)this.value='';" 
+                     onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:1.4rem; height:1.5rem;">公斤</p>
+        </label>
+
+
+        <br />
+          <div class="middle">
+            <a class="button button-balanced" ng-click="save()" style="width:180px;height:3px;position:relative;top:0rem;left:0rem;">保   存</a>
+          </div>
+
+
+
+
+
+    </ion-content>
+
+</ion-view>

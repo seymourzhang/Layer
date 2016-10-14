@@ -1,0 +1,105 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="goDailyTable()"></a>
+    <h1 class="title">
+      生产日报
+    </h1>
+<select ng-model="prodDayData.selectHouseId"
+        ng-change="judgeHouse()"
+        style="position: absolute;  
+               top:0.5rem;  
+               right:1rem; 
+               height:2rem; 
+               width:4rem; 
+               background:transparent url(img/icon/clear_image.png) no-repeat;
+               border:solid 0px #FFF;
+               color: #FFF;
+			   font-size:12pt;"> 
+    <option value        =  "{{item.HouseId}}" 
+			style="font-size:12pt;"
+            ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+            ng-selected  =  "item.HouseId == prodDayData.selectHouseId">
+            {{item.HouseName}}栋
+    </option>
+</select>
+</div>
+    <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden;">
+
+            <div style="position: relative;  
+                        top:0rem;  
+                        left:0rem; 
+                        height:8%; 
+                        width:80%;">
+              <div style="position: relative;  
+                          top:0rem;  
+                          left:0rem; 
+                          height:100%; 
+                          width:100%;
+                          font-size:12px;">
+                <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;">今天：{{prodDayData.DateInfos}}</span>
+                <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;">生长{{prodDayData.CurGrowthAge}}日龄</span>
+                <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;">产蛋{{prodDayData.CurLayerAge}}日龄</span>
+                <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;">入雏:{{prodDayData.original_amount}}</span>
+                <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;">存栏:{{prodDayData.cur_amount}}</span>
+                <span style="position: relative;top:0rem;left:1rem;font-weight: bold;color: #888888;">成活率:{{prodDayData.survRate}}%</span>
+              </div>
+              <!-- <div style="position: relative;  
+                          top:0rem;  
+                          left:0rem; 
+                          height:50%; 
+                          width:100%;">
+                <span style="position: relative;top:0rem;left:1rem; font-size:12px;">入雏：99999</span>
+                <span style="position: relative;top:0rem;left:1rem; font-size:12px;">存栏：99988</span>
+              </div> -->
+            </div>
+            <div style="position: absolute;  
+                        top:0rem;  
+                        right:0rem; 
+                        height:8%; 
+                        width:20%;">
+                <div style="height:100%;width:50%;">
+                  <span style="position: relative;top:0.2rem;left:0rem; font-weight: bold;">显示：</span>
+                </div>
+                <div style="position: absolute;top:0rem;right:0rem;height:100%;width:50%;">
+                  <select ng-model="prodDayData.selectWeek"
+                          ng-change="judgeWeek()"
+                          style="position: absolute;  
+                                 top:0rem;  
+                                 right:0.5rem; 
+                                 height:100%; 
+                                 width:130%;
+                                 background:transparent url(img/icon/clear_image.png)no-repeat;
+                                 border:solid 0px #FFF;"> 
+                      <option value        =  "{{key}}" 
+                              ng-repeat    =  "(key,val) in myConfig.WeekList"
+                              ng-selected  =  "key==prodDayData.selectWeek">
+                              {{val}}
+                      </option> 
+                  </select>
+                  <!-- <i class="icon ion-android-arrow-dropdown" style="position:absolute; top:0.7rem;right:0.5rem;"></i> -->
+                </div>
+                <!-- <button style="position: relative;top:0rem;right:0rem;height:100%;width:50%;"
+                        ng-click="toggleRight()">筛选</button> -->
+            </div>
+		        <div style="position: relative;  
+                        top:0rem;  
+                        right:0rem; 
+                        height:90%; 
+                        width:100%;">
+              <div ui-grid="gridOptions" style="position: relative;height:100%;width:100%;"ui-grid-pinning></div>
+            </div>
+            <!-- <div style="position: relative;  
+                        top:-3.3rem;  
+                        right:0rem;
+                        height:85%; 
+                        width:100%;">
+              <div ui-grid="gridOptions" style="position: relative;height:100%;width:100%;" ui-grid-pinning></div>
+            </div> -->
+
+
+
+
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,49 @@
+﻿<ion-view>
+   <div class="bar bar-header bar-balanced"> 
+    <a class    =  "button icon ion-chevron-left button-clear" 
+       ng-hide  =  "backBtn" 
+       href     =  "#/infoSafeguard">
+    </a>
+    <h1 class="title">栋舍列表</h1>
+	<!--
+    <a class          =  "button icon ion-plus button-clear" 
+       nav-direction  =  "forward" 
+       ng-click       =  "goAddbuilding()">
+    </a>-->
+   </div> 
+   <ion-content class="has-header"> 
+    <br /> 
+    <p style="color:#808080; position:absolute; left:20px; font-size:26px;">
+    栋舍信息
+    </p> 
+    <br /> 
+    <br /> 
+    <p style="color:#808080; position:absolute; left:20px; top:5rem; font-size:16px;">点击右上方“+”号，添加栋舍</p>
+    <ion-list>
+      <ion-item class      =  "item-icon-right" 
+                ng-repeat  =  "item in sparraw_user_temp.houseinfos" 
+                type       =  "item-text-wrap" 
+                href       =  "#/buildingTable/buildingInfo/{{item.houseName}}">
+         {{item.houseName}} 栋 - 设备编号  {{item.mtc_device_id}} 
+         <i class="icon ion-chevron-right icon-accessory"></i>
+         <ion-option-button class     =  "button-assertive" 
+                            ng-click  =  "remove(item)">
+          删除
+         </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <br /> 
+    <br /> 
+    <br /> 
+
+    <!-- <div class="middle"> 
+     <a class           =  "button  button-balanced item-icon-right saveBtn" 
+        ng-hide         =  "finishBtn"  
+        ng-click        =  "goEmployeesTable()" 
+        nav-transition  =  "android">添加员工</a> 
+    </div>  --> 
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+</ion-view>

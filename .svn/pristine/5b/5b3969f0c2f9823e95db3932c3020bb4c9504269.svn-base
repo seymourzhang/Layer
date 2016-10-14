@@ -1,0 +1,146 @@
+
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-gear-a button-clear" ui-sref="infoSafeguard"></a>
+    <h1 class="title">智慧鸡场<span style="font-size: 0.8rem;">产蛋版</span></h1> 
+    <a class="button icon ion-ios-information button-clear" ui-sref="about"></a> 
+   </div> 
+   <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden;background-color: #3dcb64;"> 
+    <div id="underlying_DIV"> 
+     <div style="width:100%;
+                 height:55%;"> 
+      <div  style="width:100%;
+                    height:55%;"> 
+       <div id="weather_Div" class="row"> 
+        <div class="col"> 
+         <div class="col-demo" style="position: relative;"> 
+          <p style="color:white;
+                    position: absolute;
+                    top:2%;
+                    left:5%;
+                    font-size:16px;
+                    width:200%;">{{weatherAdd}}</p>
+
+          <p style="color:white;
+                    font-size:14px;
+                    position: absolute;
+                    top:30px;
+                    left:33%;">今天</p>
+          <p style="color:white;
+                    font-size:12px;
+                    position: absolute;
+                    top:50px;
+                    left:33%;">{{sparraw_user_temp.weather.weatherinfo[0].day_desc}}&emsp;{{sparraw_user_temp.weather.weatherinfo[0].night_temp}}℃~{{sparraw_user_temp.weather.weatherinfo[0].day_temp}}℃ <br>{{sparraw_user_temp.weather.weatherinfo[0].day_wind}}&emsp;{{sparraw_user_temp.weather.weatherinfo[0].day_speed}}</p> 
+          <img id="weatherImg1" src="{{weatherSrc1}}" style="position: absolute;
+                                                                  top:35px;
+                                                                  left:0%;
+                                                                  height:35px; 
+                                                                  width:35px;" /> 
+         </div>
+        </div> 
+        <div class="col"> 
+         <div class="col-demo" style="position: relative;"> 
+          <p style="color:white;
+                    font-size:14px;
+                    position: absolute;
+                    top:30px;
+                    left:33%;">明天</p> 
+          <p style="color:white;
+                    font-size:12px;
+                    position: absolute;
+                    top:50px;
+                    left:33%;">
+                    {{sparraw_user_temp.weather.weatherinfo[1].day_desc}}&emsp;{{sparraw_user_temp.weather.weatherinfo[1].night_temp}}℃~{{sparraw_user_temp.weather.weatherinfo[1].day_temp}}℃ <br>{{sparraw_user_temp.weather.weatherinfo[1].day_wind}}&emsp;{{sparraw_user_temp.weather.weatherinfo[1].day_speed}}
+          </p>
+          <img id="weatherImg2" src="{{weatherSrc2}}" style="position: absolute;
+                                                                  top:35px;
+                                                                  left:0%;
+                                                                  height:35px; 
+                                                                  width:35px;" /> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div style="width:100%;
+                  height:50%;"> 
+       <div style="text-align:center;
+                   margin:0 auto;
+                   padding:25px;"
+            ng-style="{{judgeAlarm()}}">
+        <a ng-click="goEnvMonitoring()">
+        <img id="AlarmImg" src="img/icon/farm/home4.png" style="height:30%; width:30%;"/> 
+        </a>
+       </div> 
+      </div> 
+     </div> 
+
+
+
+
+
+
+    <div style="width:100%;
+                 height:30%;position:absolute;bottom:25px;
+                 background-color: #FFF;
+                 border:solid 1px #ECECEC;">
+            <table  style="width:100%;height:100%;">
+              <tr>
+                <td style="border:solid 2px #8E8E8E;">
+                  <a ng-click="goDailyTable()">
+                    <img src="img/icon/calendar.png" id="img1"  class="imgStyle" />
+                    <p id="text1" class="textStyle">
+                      生产报表
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 2px #8E8E8E;">
+                  <a ng-click="goEggSellsReport()">
+                    <img src="img/icon/checking1.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      销售报表
+                    </p>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td style="border:solid 2px #8E8E8E;">
+                  <a ng-click="godataAnalyseTable()">
+                    <img src="img/icon/presentation.png" id="img3"   class="imgStyle" />
+                    <p id="text3" class="textStyle">
+                      综合分析
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 2px #8E8E8E;">
+                  <a ng-click="gobatchManage()">
+                    <img src="img/icon/batchImg.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      农场管理
+                    </p>
+                  </a>
+                </td>
+              </tr>
+            </table>
+     </div>
+
+     <div style="width:100%;
+                 height:25px;position:absolute;bottom:0px;"> 
+
+      <p style="color:white;
+                font-weight:bold;
+                position:relative;
+                top:0%;
+                left:2%;"> 公告栏：  
+      </p>
+
+      <div style="position:absolute;
+                  top:0px;
+                  left:18%;
+                  height:5%; 
+                  width:80%;">     
+        <marquee direction="left" align="bottom" height="25" width="100%" onmouseout="this.start()" onmouseover="this.stop()" scrollamount="2" scrolldelay="1" style="color:white;">欢迎使用智慧农场 蛋鸡版 APP！ </marquee> 
+      </div>
+     </div> 
+    </div>    
+   </ion-content> 
+  </ion-view>

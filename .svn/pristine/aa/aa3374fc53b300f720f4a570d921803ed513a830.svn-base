@@ -1,0 +1,77 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" style="left:-6%; width:20%;  height: 100%;" ng-click="goEnvMonitoring()"></a>
+    <h1 class="title">
+      温度曲线图              <span style="font-size:0.9rem;">{{tempChartData.NavTitle}}</span> 
+    </h1>
+</div>
+    <ion-content class="has-header">
+      <!-- 横向报表 -->
+        <div id="tempChart_DIV">
+            <div id="main" style = "height:85%;"></div>
+                 <div style="float:left; width:60%; height: 2.5rem;">
+                   <div style="float:left; width:45%;  height: 2.5rem;overflow:hidden; ">
+                        <p  style="position: relative; top:5px;left:5%;">
+                        栋舍号:
+                      </p>
+
+                      <select class="select-style_temp" ng-model="tempChartData.selectedHouseId" ng-change="switchHouse()">
+                          <option
+                              value        =  "{{item.id}}"
+                              ng-repeat    =  "item in sparraw_user_temp.houseinfos"
+                              ng-selected  =  "item.HouseId==tempChartData.selectedHouseId">
+                                 {{item.houseName}}栋
+                          </option>
+                      </select>
+                     
+                   </div>
+                   <!-- <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+                          <p  style="position: relative; top:5px;left:5%;">
+                            批次号:
+                          </p>
+                          <select class="select-style_temp" ng-model="tempChartData.selectedBatch" ng-change="switchBatch()">
+                              <option value        =  "{{key}}"
+                                      ng-repeat    =  "(key,val) in tempChartData.batchTable"
+                                      ng-selected  =  "key==tempChartData.selectedBatch">
+                                  {{val}}
+                              </option>
+                          </select>
+
+
+                   </div> -->
+                 </div>
+                 <div style="float:right; width:40%; height: 2.5rem;">
+                    <div style="float:left; width:50%;  height: 2.5rem;overflow:hidden; ">
+                      <a class           =  "button button-small button-balanced" 
+                         style           =  "width     :  5rem      ;
+                                             height    :  1rem      ;
+                                             position  :  relative  ; 
+                                             top       :  0rem    ; 
+                                             left      :  1.2rem    ;
+                                             color     :  #FFFFFF   ;
+                                             border    :  0px solid #fff;"
+                          id             =  "leftBtn"
+                          ng-click="upMethods()">
+                            {{tempChartData.leftBtnName}}
+                        </a>
+                     
+                   </div>
+                   <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+                                
+                      <a class           =  "button button-small button-balanced" 
+                         style           =  "width     :  5rem      ;
+                                             height    :  1rem      ;
+                                             position  :  relative  ; 
+                                             top       :  0rem    ; 
+                                             left      :  0.5rem    ;
+                                             color     :  #FFFFFF   ;
+                                             border    :  0px solid #fff;"
+                          id             =  "rightBtn"
+                          ng-click       =  "downMethods()">
+                          {{tempChartData.rightBtnName}}
+                      </a>
+                   </div>
+                 </div>
+        </div>
+    </ion-content>
+</ion-view>

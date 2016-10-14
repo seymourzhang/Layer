@@ -1,0 +1,61 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="dailyReport"></a>
+    <h1 class="title">
+      入雏管理
+    </h1>
+<a class="button button-clear" ng-click="save()">保存</a>
+</div>
+    <ion-content class="has-header">
+    	<div class="list">
+
+    		<!-- <label class="item item-input item-select"> 
+		      <span class="input-label fontColor">栋舍号 </span>
+		        <i class="icon ion-ios-arrow-forward"></i> 
+		          <select ng-model="placeDatas.selectHouse"
+		          		  ng-change="judgeHouse()"> 
+		              <option value        =  "{{item}}" 
+		                      ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+		                      ng-selected  =  "item.HouseId == placeDatas.selectHouse.HouseId">
+		                      {{item.HouseName}}
+		              </option> 
+		          </select> 
+		     </label> -->
+
+		    <label class="item item-input"> 
+		        <span class="input-label fontColor">栋舍号</span> 
+		          <i class="icon ion-ios-arrow-forward"></i>
+		          <input type="text" ng-model="takeHouse.HouseName" readonly="readonly" style="background-color: #fff;"/> 
+		    </label> 
+
+		    <label class="item item-input"> 
+		        <span class="input-label fontColor">入雏日期</span> 
+		          <i class="icon ion-ios-arrow-forward"></i>
+		          <ionic-datepicker  input-obj="datepickerObjectPopup"> 
+		            <input type="text" ng-model="placeDatas.placeDate" readonly="readonly" style="background-color: #fff;" ng-style="{{judgeCanEditor()}}"/> 
+		          </ionic-datepicker>
+		    </label>
+
+	        <label class="item item-input"> 
+		        <span class="input-label fontColor">入雏数</span> 
+		          <i class="icon ion-ios-arrow-forward"></i> 
+		            <input type="number" ng-model="placeDatas.placeNum" /> 
+		    </label>  
+		    <p style="position:relative;top:10px;left:1rem;font-size:13px;color:#989898;">
+		      备注：入雏后入雏日期将无法修改。
+		    </p>
+	        <br /> 
+	        <br /> 
+	        <br />  
+	        </div>
+
+	        <!-- <div class="middle" height="30" width="30" style="position:relative; color:#000; top:230px;">
+	        	 <a class="button  button-balanced" style="width:240px; color:#FFFFFF;" ng-click="save()" nav-transition="android">确 认</a>
+   			</div> -->
+
+	        <br /> 
+	        <br /> 
+	        <br />
+
+    </ion-content>
+</ion-view>

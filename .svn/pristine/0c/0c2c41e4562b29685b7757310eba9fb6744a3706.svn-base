@@ -1,0 +1,105 @@
+
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" 
+       ng-hide="backBtn"
+       ng-click="GoBuildingTable()">
+    </a>
+    <h1 class="title">添加栋舍</h1> 
+   </div> 
+   <ion-content class="has-header"> 
+    <form name="myForm">
+      <div class="list"> 
+       <label class="item item-input"> 
+        <span class="input-label fontColor">农场</span>
+         <i class="icon ion-ios-arrow-forward"></i> 
+          <p>{{sparraw_user_temp.farminfo.name}}</p> 
+       </label>
+
+       <label class="item item-input"> 
+        <span class="input-label fontColor">农汇通设备编号</span> 
+          <i class="icon ion-ios-arrow-forward"></i>
+            <input  id="addMtcIdInput" 
+                    type      =  "text" 
+                    placeholder  =  "手动输入或条形码扫描"
+                    ng-model  =  "tempVar.houseTemp.mtc_device_id"/> 
+       </label>
+       <label class="item item-input" ng-click  =  "dealBarCode()">
+          <a  class = "button button-small button-balanced"  
+            style = "width     :  100px      ;
+                     height    :  2rem       ;
+                     position  :  relative   ; 
+                     top       :  0rem       ; 
+                     left      :  220px      ;
+                     border    :  solid 0px #fff  ;">
+            条形码扫描
+        </a>
+        </label>
+
+       <label class="item item-input"> 
+        <span class="input-label fontColor">栋编号</span> 
+          <i class="icon ion-ios-arrow-forward"></i>
+            <p>{{tempVar.houseTemp.houseName}}</p>
+       </label>
+
+       <!-- <div class="item item-divider">
+         鸡舍尺寸
+       </div> 
+       <label class="item item-input"> 
+        <span class="input-label fontColor">内长</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "tempVar.houseTemp.h_length"/>
+            <label style="position  :  relative  ; 
+                          top       :  0rem      ; 
+                          left      :  -1rem     ;">
+              米
+            </label> 
+       </label> 
+       <label class="item item-input"> 
+        <span class="input-label fontColor">内宽</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <input type      =  "number" 
+                 ng-model  =  "tempVar.houseTemp.h_width"/>
+          <label style  =  "position  :  relative  ; 
+                            top       :  0rem      ; 
+                            left      :  -1rem     ;">
+            米
+          </label> 
+       </label> 
+       <label class="item item-input"> 
+        <span class="input-label fontColor">内高</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type      =  "number" 
+                   ng-model  =  "tempVar.houseTemp.h_height"/> 
+            <label style  =  "position  :  relative  ; 
+                              top       :  0rem      ; 
+                              left      :  -1rem     ;">
+              米
+            </label>
+       </label> 
+       <label class="item item-input"> 
+        <span class="input-label fontColor">养殖面积</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type         =  "number" 
+                   placeholder  =  "平方米/栋 (鸡的实际活动面积)"
+                   ng-model     =  "tempVar.houseTemp.feedarea"/> 
+       </label> -->
+      </div> 
+      <br />
+      <br /> 
+      <br />
+      <div class="middle"> 
+        <a class           =  "button  button-balanced saveBtn"  
+           ng-disabled     =  "myForm.$invalid" 
+           ng-click        =  "addHouse()" 
+           nav-transition  =  "android">
+           保   存
+        </a> 
+      </div>  
+    </form>
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content> 
+  </ion-view>
